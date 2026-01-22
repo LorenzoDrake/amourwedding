@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitation</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: rgb(54 84 61);
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ===== ОСНОВНОЙ КОНТЕЙНЕР ===== */
+.container {
+    position: relative;
+    width: 1200px; /* Фиксированная ширина для десктопа */
+    height: 800px; /* Фиксированная высота для десктопа */
+    transform-origin: center center;
+    transition: transform 0.1s ease;
+}
+
+/* ===== СЦЕНА ===== */
+.scene {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+/* ===== ЦЕНТРАЛЬНЫЙ КОНТЕНТ ===== */
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #f2f2f2;
+    z-index: 5;
+    width: 600px;
+}
+
+.names {
+    font-size: 44px;
+    line-height: 1.05;
+    letter-spacing: 2px;
+    font-weight: 500;
+}
+
+.names span {
+    font-family: 'Allura', cursive;
+    font-size: 58px;
+    font-weight: 400;
+    margin-right: 10px;
+    display: inline-block;
+    transform: translateY(-6px);
+}
+
+.date {
+    margin-top: 44px;
+    font-size: 30px;
+    font-family: 'Allura', cursive;
+    letter-spacing: 1px;
+}
+
+/* ===== ОБЛАКА ===== */
+.cloud {
+    position: absolute;
+    z-index: 3;
+}
+
+.cloud.top {
+    top: -100px;
+    right: 80px;
+    transform: rotate(225deg);
+    width: 500px;
+}
+
+.cloud.bottom {
+    bottom: 20px;
+    left: 120px;
+    transform: rotate(225deg);
+    width: 400px;
+}
+
+/* ===== АНГЕЛЫ НА ОБЛАКАХ ===== */
+.angel {
+    position: absolute;
+    z-index: 4;
+    width: 450px;
+}
+
+.angel.top {
+    top: -100px;
+    right: 140px;
+    transform: rotate(110deg);
+}
+
+.angel.bottom {
+    bottom: 20px;
+    left: 120px;
+    transform: scalex(-1) rotate(180deg);
+}
+
+/* ===== ЦВЕТЫ ===== */
+.flower {
+    position: absolute;
+    z-index: 2;
+}
+
+.flower.top {
+    top: -150px;
+    left: 150px;
+    transform: rotate(135deg);
+    width: 400px;
+}
+
+.flower.bottom {
+    bottom: 10px;
+    right: 200px;
+    transform: rotate(-15deg);
+    width: 260px;
+}
+
+.symboland {
+    height: 75px;
+    width: auto;
+    transform: translate(24px, 20px);
+}
+
+.nameilya {
+    height: 75px;
+    width: auto;
+}
+
+.namekristina {
+    height: 75px;
+    width: auto;
+}
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 768px) ===== */
+@media (max-width: 768px) {
+    .container {
+        width: 100vw !important;
+        height: 100vh !important;
+        transform: none !important;
+    }
+    
+    .scene {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    .content {
+        width: 320px;
+        transform: translate(-50%, -80%);
+    }
+    
+    .names {
+        font-size: 32px;
+    }
+    
+    .names span {
+        font-size: 42px;
+    }
+    
+    .date {
+        font-size: 24px;
+        margin-top: 30px;
+    }
+    
+    /* Фиксированные размеры для мобильных */
+    .cloud.top {
+        width: 450px;
+        top: -50px;
+        right: -190px;
+        transform: rotate(225deg);
+    }
+    
+    .cloud.bottom {
+        width: 350px;
+        bottom: 100px;
+        left: -150px;
+        transform: rotate(225deg);
+    }
+    
+    .angel {
+        width: 350px;
+    }
+    
+    .angel.top {
+        top: -30px;
+        right: -190px;
+        transform: rotate(100deg);
+    }
+    
+    .angel.bottom {
+        bottom: 120px;
+        left: -150px;
+        transform: scalex(-1) rotate(215deg);
+    }
+    
+    .flower.top {
+        width: 270px;
+        top: -30px;
+        left: -75px;
+        transform: rotate(135deg);
+    }
+    
+    .flower.bottom {
+        width: 220px;
+        bottom: 50px;
+        right: -80px;
+        transform: rotate(-15deg);
+    }
+    
+    .symboland,
+    .nameilya,
+    .namekristina {
+        height: 55px;
+    }
+}
+
+/* ===== ПЛАНШЕТЫ (от 769px до 1024px) ===== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        width: 900px;
+        height: 600px;
+    }
+    
+    .content {
+        width: 500px;
+    }
+    
+    .names {
+        font-size: 38px;
+    }
+    
+    .names span {
+        font-size: 50px;
+    }
+    
+    .date {
+        font-size: 26px;
+        margin-top: 35px;
+    }
+    
+    .cloud.top {
+        width: 550px;
+        right: 150px;
+    }
+    
+    .cloud.bottom {
+        width: 400px;
+        left: 150px;
+    }
+    
+    .angel {
+        width: 400px;
+    }
+    
+    .angel.top {
+        right: 180px;
+    }
+    
+    .angel.bottom {
+        left: 180px;
+    }
+    
+    .flower.top {
+        width: 300px;
+        left: 200px;
+    }
+    
+    .flower.bottom {
+        width: 230px;
+        right: 200px;
+    }
+    
+    .symboland,
+    .nameilya,
+    .namekristina {
+        height: 65px;
+    }
+}
+
+/* Отключение масштабирования на мобильных */
+@media (hover: none) and (pointer: coarse) {
+    html {
+        touch-action: manipulation;
+    }
+    
+    body {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
+
+/* Фикс для изображений */
+img {
+    max-width: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="scene">
+        <!-- ВЕРХНИЙ ЦВЕТОК -->
+        <img
+            src="https://static.tildacdn.com/tild6665-3566-4137-a261-353231666237/Rectangle_988.png"
+            class="flower top"
+            alt=""
+        >
+
+        <!-- НИЖНИЙ ЦВЕТОК -->
+        <img
+            src="https://static.tildacdn.com/tild6265-3634-4261-b663-626465663335/Mask_group.png"
+            class="flower bottom"
+            alt=""
+        >
+
+        <!-- ВЕРХНЕЕ ОБЛАКО С АНГЕЛОМ -->
+        <img
+            src="https://static.tildacdn.com/tild3333-3431-4635-a661-633466303738/photo.png"
+            class="cloud top"
+            alt=""
+        >
+            <img
+                src="https://static.tildacdn.com/tild6133-6438-4761-a465-326532333538/photo.png"
+                class="angel top"
+                alt="Ангел"
+            >
+
+        <!-- НИЖНЕЕ ОБЛАКО С АНГЕЛОМ -->
+        <img
+            src="https://static.tildacdn.com/tild3362-6364-4365-b736-333764326239/Rectangle_125.png"
+            class="cloud bottom"
+            alt=""
+        >
+            <img
+                src="https://static.tildacdn.com/tild6133-6438-4761-a465-326532333538/photo.png"
+                class="angel bottom"
+                alt="Ангел"
+            >
+
+        <!-- ЦЕНТР -->
+        <div class="content">
+            <div class="names">
+                <span><img src="https://i.ibb.co/NdfdVpG6/2.png" class="symboland" alt=""></span>
+                <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya" alt=""><br>
+                <img src="https://i.ibb.co/V0ZgKxDm/kristina.png" class="namekristina" alt="">
+            </div>
+            <div class="date">
+                6 июня 2026
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// АВТОМАТИЧЕСКОЕ МАСШТАБИРОВАНИЕ ПРИ ИЗМЕНЕНИИ РАЗМЕРА ОКНА
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.container');
+    const isMobile = window.innerWidth <= 768;
+    
+    // Функция для масштабирования контейнера
+    function scaleContainer() {
+        if (isMobile) {
+            // На мобильных не масштабируем, используем адаптивную версию
+            container.style.transform = 'none';
+            return;
+        }
+        
+        // Получаем размеры окна
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        
+        // Размеры контейнера (1200x800 для десктопа)
+        const containerWidth = 1200;
+        const containerHeight = 800;
+        
+        // Рассчитываем масштаб для вписывания в окно
+        const scaleX = windowWidth / containerWidth;
+        const scaleY = windowHeight / containerHeight;
+        const scale = Math.min(scaleX, scaleY) * 0.9; // 90% от максимального масштаба
+        
+        // Применяем масштабирование
+        container.style.transform = `scale(${scale})`;
+    }
+    
+    // Вызываем при загрузке и изменении размера
+    scaleContainer();
+    window.addEventListener('resize', scaleContainer);
+    
+    // Блокировка масштабирования на мобильных
+    document.addEventListener('touchstart', function(e) {
+        if (e.touches.length > 1) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    document.addEventListener('gesturestart', function(e) {
+        e.preventDefault();
+    });
+    
+    // Предотвращаем зум колесиком
+    document.addEventListener('wheel', function(e) {
+        if (e.ctrlKey) {
+            e.preventDefault();
+        }
+    }, { passive: false });
+});
+</script>
+
+</body>
+</html>

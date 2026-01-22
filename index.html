@@ -24,13 +24,12 @@ body {
     overflow-y: auto;
 }
 
-/* ===== ОСНОВНОЙ КОНТЕЙНЕР СКРОЛЛА ===== */
 .main-wrapper {
     width: 100%;
-    min-height: 200vh;
+    min-height: 300vh;
 }
 
-/* ===== ПЕРВЫЙ ЭКРАН (ВАШ ТЕКУЩИЙ ДИЗАЙН) ===== */
+/* ===== ПЕРВЫЙ ЭКРАН ===== */
 .screen-1 {
     width: 100%;
     height: 100vh;
@@ -41,140 +40,6 @@ body {
     overflow: hidden;
 }
 
-/* ===== ВТОРОЙ ЭКРАН (НОВЫЙ БЛОК) ===== */
-.screen-2 {
-    width: 100%;
-    min-height: 100vh;
-    height: auto;
-    background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 53%, #133d1f 53%, #133d1f 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 0;
-    overflow: hidden;
-}
-
-/* Контейнер для второго экрана с фиксированными размерами */
-.container-2 {
-    position: relative;
-    width: 1200px;
-    height: 800px;
-    transform-origin: center center;
-    transition: transform 0.1s ease;
-    background: transparent; /* Убираем фон у контейнера, так как он теперь у screen-2 */
-}
-
-/* Сцена для второго экрана */
-.scene-2 {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-}
-
-/* Стили для картинок второго экрана */
-.screen-2-image {
-    position: absolute;
-    z-index: 5;
-}
-
-.screen-2-image.title {
-    width: 300px;
-    top: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.screen-2-image.text {
-    width: 300px;
-    top: 220px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.screen-2-image.photo {
-    width: 100vw;
-    top: 380px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 6; /* Чтобы фото было над разделителем фона */
-}
-
-/* Новые элементы */
-.screen-2-image.date-icon {
-    width: 120px;
-    top: 510px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 7;
-}
-
-.screen-2-image.location-icon {
-    width: 100px;
-    top: 580px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 7;
-}
-
-.screen-2-image.map-photo {
-    width: 400px;
-    top: 730px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 7;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.screen-2-image.inverted-photo {
-    width: 600px;
-    top: 1150px;
-    left: 50%;
-    transform: translateX(-50%) rotate(180deg);
-    z-index: 7;
-    opacity: 0.9;
-}
-
-.screen-2-image.flower {
-    width: 250px;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Стили для текстовых элементов */
-.location-text {
-    position: absolute;
-    color: #f2f2f2;
-    font-family: 'Allura', cursive;
-    text-align: center;
-    z-index: 7;
-    width: 100%;
-}
-
-.restaurant-name {
-    top: 650px;
-    font-size: 48px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.restaurant-address {
-    top: 710px;
-    font-size: 22px;
-    font-family: Georgia, serif;
-    line-height: 1.4;
-    max-width: 500px;
-    left: 50%;
-    transform: translateX(-50%);
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* ===== ОСНОВНОЙ КОНТЕЙНЕР ПЕРВОГО ЭКРАНА ===== */
 .container {
     position: relative;
     width: 1200px;
@@ -183,7 +48,6 @@ body {
     transition: transform 0.1s ease;
 }
 
-/* ===== СЦЕНА ===== */
 .scene {
     position: absolute;
     width: 100%;
@@ -192,7 +56,6 @@ body {
     left: 0;
 }
 
-/* ===== ЦЕНТРАЛЬНЫЙ КОНТЕНТ ===== */
 .content {
     position: absolute;
     top: 50%;
@@ -227,7 +90,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* ===== НИЖНИЙ ТЕКСТ С КАРТИНКОЙ ===== */
 .bottom-text {
     position: absolute;
     bottom: -20px;
@@ -258,7 +120,6 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== ОБЛАКА ===== */
 .cloud {
     position: absolute;
     z-index: 3;
@@ -278,7 +139,6 @@ body {
     width: 400px;
 }
 
-/* ===== АНГЕЛЫ НА ОБЛАКАХ ===== */
 .angel {
     position: absolute;
     z-index: 4;
@@ -297,7 +157,6 @@ body {
     transform: scalex(-1) rotate(180deg);
 }
 
-/* ===== ЦВЕТЫ ===== */
 .flower {
     position: absolute;
     z-index: 2;
@@ -323,22 +182,16 @@ body {
     transform: translate(24px, 20px);
 }
 
-.nameilya {
+.nameilya, .namekristina {
     height: 85px;
     width: auto;
 }
 
-.namekristina {
-    height: 85px;
-    width: auto;
-}
-
-.weddate{
+.weddate {
     height: 100px;
     width: auto;
 }
 
-/* ===== СТРЕЛКА ПРОКРУТКИ ===== */
 .scroll-indicator {
     position: absolute;
     bottom: 30px;
@@ -349,7 +202,6 @@ body {
     text-align: center;
     animation: bounce 2s infinite;
     cursor: pointer;
-    display: none;
 }
 
 .scroll-indicator span {
@@ -375,7 +227,137 @@ body {
     }
 }
 
-/* ===== МОБИЛЬНАЯ ВЕРСИЯ (до 768px) ===== */
+/* ===== ВТОРОЙ ЭКРАН ===== */
+.screen-2 {
+    width: 100%;
+    min-height: 200vh;
+    height: auto;
+    background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 29%, #133d1f 29%, #133d1f 100%);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container-2 {
+    position: relative;
+    width: 100vw;
+    height: 200vh;
+    transform-origin: center center;
+    transition: transform 0.1s ease;
+    background: transparent;
+}
+
+.scene-2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.screen-2-image {
+    position: absolute;
+    z-index: 5;
+}
+
+.screen-2-image.title {
+    width: 300px;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.screen-2-image.text {
+    width: 500px;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.screen-2-image.photo {
+    width: 100vw;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+}
+
+.screen-2-image.date-icon {
+    width: 360px;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 7;
+}
+
+.screen-2-image.location-icon {
+    width: 240px;
+    top: 44%;
+    left: 57%;
+    transform: translateX(-50%);
+    z-index: 7;
+}
+
+.screen-2-image.map-photo {
+    object-fit: cover;
+    width: 100vw;
+    height: 35%;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 7;
+    /* Добавляем градиентную маску */
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%);
+    mask-image: linear-gradient(to bottom, black 70%, transparent 95%);
+}
+
+.screen-2-image.inverted-photo {
+    width: 100vw;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    z-index: 7;
+}
+
+.screen-2-image.flower {
+    width: 250px;
+    left: 25%;
+    top: 22%;
+    transform: translateX(-50%);
+    z-index: 7;
+}
+
+.location-text {
+    position: absolute;
+    color: #f2f2f2;
+    font-family: 'Allura', cursive;
+    text-align: center;
+    z-index: 7;
+    width: 100%;
+}
+
+.restaurant-name {
+    top: 50%;
+    font-size: 48px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.restaurant-address {
+    top: 55%;
+    font-size: 22px;
+    font-family: Georgia, serif;
+    line-height: 1.4;
+    max-width: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
 @media (max-width: 768px) {
     body {
         overflow-y: auto;
@@ -392,116 +374,33 @@ body {
     }
     
     .screen-2 {
-        min-height: 100vh;
+        min-height: 160vh;
         height: auto;
         padding: 0;
-        background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 38%, #133d1f 38%, #133d1f 100%);
+        background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 28%, #133d1f 28%, #133d1f 100%);
     }
     
-    /* Второй экран - фиксированные позиции для мобильных */
-    .container-2 {
-        width: 100vw !important;
-        height: auto !important;
-        min-height: 100vh;
-        transform: none !important;
-        background: transparent;
-    }
-    
-    .scene-2 {
-        width: 100vw;
-        height: auto;
-        min-height: 100vh;
-        position: relative;
-    }
-    
-    .screen-2-image.title {
-        width: 250px;
-        top: 5%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .screen-2-image.text {
-        width: 280px;
-        top: 15%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .screen-2-image.photo {
-        width: 300%;
-        top: 30%;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 6;
-    }
-    
-    .screen-2-image.date-icon {
-        width: 80px;
-        top: 48%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .screen-2-image.location-icon {
-        width: 70px;
-        top: 55%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .screen-2-image.map-photo {
-        width: 85%;
-        max-width: 350px;
-        top: 72%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .screen-2-image.inverted-photo {
-        width: 90%;
-        max-width: 400px;
-        top: 92%;
-        left: 50%;
-        transform: translateX(-50%) rotate(180deg);
-        margin-bottom: 50px;
-    }
-    
-    .screen-2-image.flower {
-        width: 180px;
-        top: 25%;
-        left: 0;
-        transform: translateX(-25%);
-        z-index: 7;
-    }
-    
-    /* Текстовые элементы для мобильных */
-    .restaurant-name {
-        top: 60%;
-        font-size: 32px;
-        width: 100%;
-        text-align: center;
-    }
-    
-    .restaurant-address {
-        top: 65%;
-        font-size: 16px;
-        max-width: 300px;
-        left: 50%;
-        transform: translateX(-50%);
-        text-align: center;
-    }
-    
-    /* Первый экран - ваши оригинальные стили */
-    .container {
+    .container, .container-2 {
         width: 100vw !important;
         height: 100vh !important;
         transform: none !important;
+        min-height: 100vh;
     }
     
-    .scene {
+    .container-2 {
+        height: auto !important;
+        min-height: 160vh;
+    }
+    
+    .scene, .scene-2 {
         width: 100vw;
         height: 100vh;
+    }
+    
+    .scene-2 {
+        height: auto;
+        min-height: 160vh;
+        position: relative;
     }
     
     .content {
@@ -522,7 +421,6 @@ body {
         margin-top: 30px;
     }
     
-    /* Нижний текст для мобильных */
     .bottom-text {
         bottom: 20px;
         gap: 10px;
@@ -538,19 +436,16 @@ body {
         padding: 0 15px;
     }
     
-    /* Фиксированные размеры для мобильных */
     .cloud.top {
         width: 450px;
         top: -50px;
         right: -190px;
-        transform: rotate(225deg);
     }
     
     .cloud.bottom {
         width: 350px;
         bottom: 40px;
         left: -150px;
-        transform: rotate(225deg);
     }
     
     .angel {
@@ -573,24 +468,19 @@ body {
         width: 270px;
         top: -30px;
         left: -75px;
-        transform: rotate(135deg);
     }
     
     .flower.bottom {
         width: 220px;
         bottom: 30px;
         right: -80px;
-        transform: rotate(-15deg);
     }
     
-    .symboland,
-    .nameilya,
-    .namekristina
-    {
+    .symboland, .nameilya, .namekristina {
         height: 65px;
     }
     
-    .weddate{
+    .weddate {
         height: 100px;
     }
     
@@ -598,74 +488,62 @@ body {
         display: block;
         bottom: 20px;
     }
-}
-
-/* ДЕСКТОП (от 1025px) ===== */
-@media (min-width: 1025px) {
-    .scroll-indicator {
-        display: block;
-    }
     
-    /* Второй экран для десктопа */
-    .screen-2 {
-        background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 53%, #133d1f 53%, #133d1f 100%);
-    }
-    
+    /* Мобильные стили для второго экрана */
     .screen-2-image.title {
-        width: 300px;
-        top: -25px;
+        width: 250px;
+        top: 4%;
     }
     
     .screen-2-image.text {
-        width: 500px;
-        top: 100px;
+        width: 280px;
+        top: 12%;
     }
     
     .screen-2-image.photo {
-        width: 100vw;
-        top: 320px;
-        z-index: 6;
+        width: 300%;
+        top: 24%;
     }
     
     .screen-2-image.date-icon {
-        width: 120px;
-        top: 510px;
+        width: 200px;
+        top: 35%;
     }
     
     .screen-2-image.location-icon {
-        width: 100px;
-        top: 580px;
+        width: 150px;
+        top: 42%;
+        left: 65%;
     }
     
     .screen-2-image.map-photo {
-        width: 400px;
-        top: 730px;
+        width: 100%;
+        bottom: 15%;
     }
     
     .screen-2-image.inverted-photo {
-        width: 600px;
-        top: 1150px;
-        transform: translateX(-50%) rotate(180deg);
+        width: 300%;
+        bottom: 5%;
+        margin-bottom: 50px;
     }
     
     .screen-2-image.flower {
-        width: 250px;
-        left: 20%;
-        transform: translateX(-50%);
-        top: 280px;
-        z-index: 7;
+        width: 180px;
+        top: 20%;
+        left: 0;
+        transform: translateX(-25%);
     }
     
-    /* Текстовые элементы для десктопа */
     .restaurant-name {
-        top: 650px;
-        font-size: 48px;
+        top: 48%;
+        font-size: 32px;
+        width: 100%;
     }
     
     .restaurant-address {
-        top: 710px;
-        font-size: 22px;
-        max-width: 500px;
+        top: 54%;
+        font-size: 14px;
+        max-width: 300px;
     }
 }
 
@@ -799,7 +677,7 @@ img {
                 <div class="location-text restaurant-address">Брестская область, город Ивацевичи, ул. Ленина 8а</div>
                 
                 <!-- Фото карты/места -->
-                <img src="https://optim.tildacdn.com/tild6365-3732-4561-b766-316263376430/-/resize/656x/-/format/webp/photo.png.webp" 
+                <img src="https://i.ibb.co/WNRXcwVv/Romi.png" 
                      class="screen-2-image map-photo" 
                      alt="Фото места">
                 

@@ -32,19 +32,20 @@ body {
 /* ===== ПЕРВЫЙ ЭКРАН ===== */
 .screen-1 {
     width: 100%;
-    height: 100vh;
-    display: flex;
+    height: 170vh;
+    /*display: flex;*/
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
+	margin-bottom: -100px;
 }
 
 .container {
     position: relative;
     width: 1200px;
-    height: 800px;
-    transform-origin: center center;
+    height: 100%;
+    margin: 0 auto;
     transition: transform 0.1s ease;
 }
 
@@ -58,7 +59,7 @@ body {
 
 .content {
     position: absolute;
-    top: 50%;
+    top: 28%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -92,15 +93,16 @@ body {
 
 .bottom-text {
     position: absolute;
-    bottom: -20px;
+    top: 48%;
+	height: 500px;
     left: 0;
     width: 100%;
     text-align: center;
     z-index: 6;
-    display: flex;
+    /*display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 15px;*/
 }
 
 .bottom-text-image {
@@ -115,7 +117,7 @@ body {
     font-size: 22px;
     line-height: 1.4;
     max-width: 800px;
-    margin: 0 auto;
+    margin: 50px auto;
     padding: 0 20px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
@@ -133,7 +135,7 @@ body {
 }
 
 .cloud.bottom {
-    bottom: 20px;
+    top: 28%;
     left: 120px;
     transform: rotate(225deg);
     width: 400px;
@@ -152,7 +154,7 @@ body {
 }
 
 .angel.bottom {
-    bottom: 20px;
+    top: 26%;
     left: 120px;
     transform: scalex(-1) rotate(180deg);
 }
@@ -163,14 +165,14 @@ body {
 }
 
 .flower.top {
-    top: -150px;
+    top: -120px;
     left: 150px;
     transform: rotate(135deg);
     width: 400px;
 }
 
 .flower.bottom {
-    bottom: 10px;
+    top: 32%;
     right: 200px;
     transform: rotate(-15deg);
     width: 260px;
@@ -230,11 +232,10 @@ body {
 /* ===== ВТОРОЙ ЭКРАН ===== */
 .screen-2 {
     width: 100%;
-    min-height: 200vh;
-    height: auto;
-    background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 29%, #143e1f 29%, #143e1f 100%);
-    display: flex;
-    justify-content: center;
+    height: 130vh;
+    background: #143e1f;
+    /*display: flex;
+    justify-content: center;*/
     position: relative;
     padding: 0;
     overflow: hidden;
@@ -243,7 +244,7 @@ body {
 .container-2 {
     position: relative;
     width: 100vw;
-    height: 200vh;
+	height: 100%;
     transform-origin: center center;
     transition: transform 0.1s ease;
     background: transparent;
@@ -264,21 +265,20 @@ body {
 
 .screen-2-image.title {
     width: 300px;
-    top: 5%;
     left: 50%;
     transform: translateX(-50%);
 }
 
 .screen-2-image.text {
     width: 500px;
-    top: 12%;
     left: 50%;
     transform: translateX(-50%);
+	margin-top: 120px;
 }
 
 .screen-2-image.photo {
     width: 100vw;
-    top: 25%;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     z-index: 6;
@@ -286,7 +286,7 @@ body {
 
 .screen-2-image.date-icon {
     width: 360px;
-    top: 35%;
+    top: 0%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 7;
@@ -294,7 +294,7 @@ body {
 
 .screen-2-image.location-icon {
     width: 240px;
-    top: 44%;
+    top: 14%;
     left: 57%;
     transform: translateX(-50%);
     z-index: 7;
@@ -303,8 +303,8 @@ body {
 .screen-2-image.map-photo {
     object-fit: cover;
     width: 100vw;
-    height: 35%;
-    bottom: 3%;
+    height: 50%;
+    bottom: 8%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 7;
@@ -323,17 +323,18 @@ body {
 .screen-2-image.flower {
     width: 250px;
     left: 25%;
-    top: 22%;
+    bottom: 8%;
     transform: translateX(-50%);
     z-index: 7;
 }
 
 .screen-4-image.photo {
+	position: absolute;
     width: 100vw;
-    top: 25%;
+    bottom: 0;
     left: 0%;
     z-index: 6;
-	margin-bottom: -15px;
+    margin-bottom: -15px;
 }
 
 .location-text {
@@ -346,7 +347,7 @@ body {
 }
 
 .restaurant-name {
-    top: 50%;
+    top: 22%;
     font-size: 48px;
     font-weight: 500;
     letter-spacing: 2px;
@@ -354,7 +355,7 @@ body {
 }
 
 .restaurant-address {
-    top: 55%;
+    top: 32%;
     font-size: 22px;
     font-family: Georgia, serif;
     line-height: 1.4;
@@ -376,6 +377,10 @@ body {
 
 .screen-3, .screen-4 {
     background-color: #f0f0ee;
+}
+
+.screen-4 {
+    height: 170vh;
 }
 
 .screen-5 {
@@ -418,6 +423,10 @@ body {
     background-color: #f2f2f2;
 }
 
+.screen-3 {
+    min-height: 70vh;
+}
+
 /* Программа дня */
 .program-image {
     margin: 0 auto;
@@ -448,6 +457,7 @@ body {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
+	transform: translateX(20%);
 }
 
 .program-timeline {
@@ -477,7 +487,7 @@ body {
     position: absolute;
     left: 140px;
     top: 25px;
-    bottom: 45px;
+    bottom: 30px;
     width: 1px;
     background-color: #000;
 }
@@ -500,11 +510,11 @@ body {
     display: flex;
     flex-direction: column;
     margin-left: 40px;
-    margin-top: -5px;
+    margin-top: 10px;
 }
 
 .event-item {
-    margin-bottom: 60px;
+    margin-bottom: 85px;
     text-align: left;
     position: relative;
 }
@@ -531,7 +541,7 @@ body {
 /* Дресс-код */
 .dress-code-content {
     /*max-width: 800px;*/
-    margin-top: 40px;
+    margin-top: 120px;
 }
 
 .dress-code-text {
@@ -596,12 +606,12 @@ body {
 }
 
 .contact-person {
-    background-color: rgba(255, 255, 255, 0.1);
+    /*background-color: rgba(255, 255, 255, 0.1);
     padding: 40px;
     border-radius: 20px;
     margin-bottom: 40px;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);*/
 }
 
 .contact-person h3 {
@@ -614,7 +624,6 @@ body {
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
 .contact-item {
@@ -684,15 +693,22 @@ body {
 .program-image.flower {
     width: 350px;
     position: absolute;
+	right: 27%;
     transform: rotate(180deg);
 }
 
 .dresscode.title {
     width: 450px;
+	margin-top: 100px;
+	margin-right: 200px;
 }
 
 .dresscode.title-eng {
-    width: 250px;
+	position: absolute;
+    width: 450px;
+    top: 22%;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
@@ -707,43 +723,44 @@ body {
     }
     
     .screen-1 {
-        height: 100vh;
+        height: 150vh;
         position: relative;
     }
     
     .screen-2 {
-        min-height: 160vh;
-        height: auto;
+        height: 90vh;
         padding: 0;
-        background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 28%, #143e1f 28%, #143e1f 100%);
+        background: #143e1f;
     }
     
     .container, .container-2 {
         width: 100vw !important;
-        height: 100vh !important;
+        height: 100% !important;
         transform: none !important;
         min-height: 100vh;
     }
     
     .container-2 {
-        height: auto !important;
-        min-height: 160vh;
+        height: 100% !important;
     }
     
     .scene, .scene-2 {
         width: 100vw;
-        height: 100vh;
+        height: 100%;
     }
     
     .scene-2 {
-        height: auto;
-        min-height: 160vh;
+        height: 100%;
         position: relative;
     }
+
+.screen-3 {
+    min-height: 60vh;
+}
     
     .content {
         width: 320px;
-        transform: translate(-50%, -60%);
+        transform: translate(-50%, -40%);
     }
     
     .names {
@@ -760,8 +777,7 @@ body {
     }
     
     .bottom-text {
-        bottom: 20px;
-        gap: 10px;
+        top: 55%;
     }
     
     .bottom-text-image {
@@ -772,6 +788,8 @@ body {
         font-size: 16px;
         max-width: 300px;
         padding: 0 15px;
+		margin: 20px auto;
+		margin-bottom: 50px;
     }
     
     .cloud.top {
@@ -782,7 +800,7 @@ body {
     
     .cloud.bottom {
         width: 350px;
-        bottom: 40px;
+        top: 35%;
         left: -150px;
     }
     
@@ -797,7 +815,7 @@ body {
     }
     
     .angel.bottom {
-        bottom: 40px;
+        top: 35%;
         left: -120px;
         transform: scalex(-1) rotate(215deg);
     }
@@ -810,14 +828,23 @@ body {
     
     .flower.bottom {
         width: 220px;
-        bottom: 30px;
+        top: 38%;
         right: -80px;
     }
     
     .symboland, .nameilya, .namekristina {
         height: 65px;
     }
-    
+    .nameilya{
+		transform: translateX(-50%);
+	}
+
+	.symboland{
+		position: absolute;
+		bottom: 5px;
+        right: 10px;
+	}
+	
     .weddate {
         height: 100px;
     }
@@ -830,27 +857,25 @@ body {
     /* Мобильные стили для второго экрана */
     .screen-2-image.title {
         width: 250px;
-        top: 4%;
+		margin-top: 15px;
     }
     
     .screen-2-image.text {
         width: 280px;
-        top: 12%;
     }
     
     .screen-2-image.photo {
         width: 300%;
-        top: 24%;
+        bottom: 0%;
     }
     
     .screen-2-image.date-icon {
         width: 200px;
-        top: 35%;
+		margin-top: 50px;
     }
     
     .screen-2-image.location-icon {
         width: 150px;
-        top: 42%;
         left: 65%;
     }
     
@@ -866,27 +891,29 @@ body {
     
     .screen-2-image.flower {
         width: 180px;
-        top: 20%;
+        bottom: 5%;
         left: 0;
         transform: translateX(-25%);
     }
+	
+	.screen-4 {
+		height: 155vh;
+	}
 
     .screen-4-image.photo {
-        width: 300%;
-		position: relative;
+		width: 300%;
+        position: absolute;
         margin-bottom: -5%;
-        top: 24%;
-		transform: translateX(-50%);
+        bottom: 0;
+        transform: translateX(-50%);
     }
     
     .restaurant-name {
-        top: 48%;
         font-size: 32px;
         width: 100%;
     }
     
     .restaurant-address {
-        top: 54%;
         font-size: 14px;
         max-width: 300px;
     }
@@ -894,7 +921,7 @@ body {
     /* Мобильные стили для программы дня */
     .section-content {
         padding: 0px 20px;
-        width: 95%;
+        width: 100%;
     }
     
     .section-title {
@@ -1100,67 +1127,67 @@ img {
 
 /* Позиционирование каждой картинки с небольшим смещением */
 .image-1 {
-	height: 450px;
-	left: -30%;
+	height: 500px;
+	left: 30%;
 	top: -5%;
 	z-index: 6;
 }
 
 .image-2 {
 	height: 450px;
-	left: -5%;
+	left: 35%;
 	top: 15%;
 	z-index: 7;
 }
 
 .image-3 {
 	height: 450px;
-	left: 15%;
+	left: 38%;
 	top: -10%;
 	z-index: 5;
 }
 
 .image-4 {
-	height: 400px;
-	left: 40%;
+	height: 450px;
+	left: 44%;
 	top: 0;
 	z-index: 6;
 }
 
 .image-5 {
-	height: 600px;
-	left: 40%;
+	height: 650px;
+	left: 47%;
 	top: 0;
 	z-index: 7;
 }
 
 .image-6 {
-	height: 400px;
-	left: 68%;
+	height: 450px;
+	left: 58%;
 	top: -6%;
 	z-index: 5;
 }
 
 .image-7 {
-	height: 380px;
-	right: 20%;
+	height: 450px;
+	left: 53%;
 	top: 15%;
 	z-index: 6;
 }
 
 .image-bg1 {
-	height: 300px;
-	left: -35%;
-	bottom: -10%;
-	z-index: 2;
+	height: 400px;
+	left: 28%;
+	bottom: -125%;
+	z-index: 3;
 }
 
 .image-bg2 {
-	height: 300px;
-	right: -30%;
-	bottom: 5%;
-	transform: rotate(102deg)
-	z-index: 3;
+	height: 450px;
+	right: 30%;
+	bottom: -125%;
+	transform: rotate(102deg);
+	z-index: 2;
 }
 
 /* Мобильная версия для наложенных картинок */
@@ -1239,6 +1266,245 @@ img {
     }
 }
 
+/* ===== СТИЛИ ДЛЯ КОНТАКТОВ ===== */
+.screen-5 .section-content {
+    padding: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.contacts-main-image {
+    width: 300px;
+    margin: 0 auto 30px;
+    display: block;
+}
+
+.contacts-subtext {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contacts-subtext p {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    color: #f2f2f2;
+    line-height: 1.6;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.contacts-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.contacts-left-image {
+    width: 180px;
+    height: auto;
+	position: absolute;
+}
+
+.contacts-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-person {
+    text-align: center;
+}
+
+.contact-person h3 {
+    font-family: 'Allura', cursive;
+    font-size: 42px;
+    color: #f2f2f2;
+    margin-bottom: 10px;
+}
+
+.contact-phone {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    color: #f2f2f2;
+    letter-spacing: 0.5px;
+}
+
+.contacts-decorative-image {
+    width: 250px;
+    margin: 30px auto;
+    display: block;
+    opacity: 0.9;
+}
+
+.with-love-image {
+    width: 200px;
+    margin: 20px auto 50px;
+    display: block;
+}
+
+.contacts-gallery-background {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 300px;
+}
+
+.contacts-background-image {
+	position: absolute;
+    width: 100%;
+    height: auto;
+    display: block;
+	bottom: 0;
+}
+
+.gallery-image {
+    transition: transform 0.3s ease;
+}
+
+.gallery-image:hover {
+    transform: scale(1.05);
+}
+
+.gallery-img-1 {
+	position: absolute;
+    width: 120px;
+	bottom: 5%;
+}
+
+.gallery-img-2 {
+	position: absolute;
+    width: 90px;
+	bottom: 5%;
+}
+
+.gallery-img-3 {
+	position: absolute;
+    width: 100px;
+	bottom: 5%;
+}
+
+.gallery-img-4 {
+	position: absolute;
+    width: 120px;
+	bottom: 5%;
+}
+
+.gallery-img-5 {
+	position: absolute;
+    width: 60px;
+	bottom: 5%;
+}
+
+.gallery-img-6 {
+	position: absolute;
+    width: 50px;
+	bottom: 5%;
+}
+
+/* Мобильная версия для контактов */
+@media (max-width: 768px) {
+
+.contacts-background-image {
+    position: absolute;
+    width: 300px;
+    height: auto;
+    display: block;
+    left: 50%;
+    transform: translate(-50%);
+    bottom: 5%;
+	z-index: 9999;
+}
+    .contacts-main-image {
+        width: 250px;
+    }
+    
+    .contacts-subtext p {
+        font-size: 18px;
+        padding: 0 10px;
+		text-align: center;
+    }
+    
+    .contacts-wrapper {
+        gap: 30px;
+        flex-direction: column;
+		align-items: flex-end;
+    }
+    
+    .contacts-left-image {
+        width: 140px;
+        order: 2;
+		left: -10%;
+        transform: rotate(61deg);
+    }
+    
+    .contacts-info {
+        order: 1;
+    }
+    
+    .contact-person h3 {
+        font-size: 36px;
+    }
+    
+    .contact-phone {
+        font-size: 18px;
+    }
+    
+    .contacts-decorative-image {
+        width: 300px;
+    }
+    
+    .with-love-image {
+        width: 260px;
+		margin-top: 50px;
+		margin-bottom: 250px;
+    }
+    
+    
+    .gallery-img-1 {
+		width: 140px;
+        bottom: 4%;
+        left: 0%;
+        transform: rotate(180deg);
+    }
+    
+    .gallery-img-2 {
+        width: 150px;
+        bottom: 7%;
+        right: -7%;
+        transform: rotate(320deg);
+    }
+    
+    .gallery-img-3 {
+		width: 130px;
+        bottom: 2%;
+        right: 2%;
+        transform: rotate(320deg);
+    }
+    
+    .gallery-img-4 {
+		width: 150px;
+        bottom: 2%;
+        right: 35%;
+        transform: rotate(180deg);
+    }
+    
+    .gallery-img-5 {
+		width: 55px;
+        bottom: 20%;
+        left: -5%;
+        transform: rotate(0deg);
+    }
+    
+    .gallery-img-6 {
+		width: 55px;
+        bottom: 28%;
+        right: 0%;
+        transform: rotate(0deg);
+    }
+}
+
 }
 
 
@@ -1295,8 +1561,8 @@ img {
                 <!-- ЦЕНТР -->
                 <div class="content">
                     <div class="names">
-                        <span><img src="https://i.ibb.co/NdfdVpG6/2.png" class="symboland" alt=""></span>
-                        <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya" alt=""><br>
+                        <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya" alt="">
+						<span><img src="https://i.ibb.co/NdfdVpG6/2.png" class="symboland" alt=""></span><br>
                         <img src="https://i.ibb.co/V0ZgKxDm/kristina.png" class="namekristina" alt="">
                     </div>
                     <div class="date">
@@ -1310,7 +1576,21 @@ img {
                          class="bottom-text-image" 
                          alt="Декоративная картинка">
                     <p>Совсем скоро наступит наш<br>особенный день - наша свадьба!</p>
+					<img src="https://i.ibb.co/q3t1cdmS/6626.png" 
+                     class="screen-2-image title" 
+                     alt="Дорогие гости!">
+					<img src="https://static.tildacdn.com/tild3730-6132-4438-b062-333533636231/_______________.svg" 
+                     class="screen-2-image text" 
+                     alt="Текст приглашения">
+					 
                 </div>
+				<img src="https://i.ibb.co/nsQx8rFW/image.png" 
+                     class="screen-2-image photo" 
+                     alt="Фотография">
+				                <!-- Декоративный цветок -->
+                <img src="https://optim.tildacdn.com/tild3334-3564-4364-a361-303830323930/-/resize/310x/-/format/webp/Rectangle_988_1.png.webp" 
+                     class="screen-2-image flower" 
+                     alt="Декоративный цветок">
             </div>
         </div>
         
@@ -1320,20 +1600,7 @@ img {
     <div class="screen-2" id="second-screen">
         <div class="container-2">
             <div class="scene-2">
-                <!-- Заголовок "Дорогие гости!" -->
-                <img src="https://i.ibb.co/q3t1cdmS/6626.png" 
-                     class="screen-2-image title" 
-                     alt="Дорогие гости!">
                 
-                <!-- Основной текст приглашения -->
-                <img src="https://static.tildacdn.com/tild3730-6132-4438-b062-333533636231/_______________.svg" 
-                     class="screen-2-image text" 
-                     alt="Текст приглашения">
-                
-                <!-- Фотография для второго экрана -->
-                <img src="https://i.ibb.co/nsQx8rFW/image.png" 
-                     class="screen-2-image photo" 
-                     alt="Фотография">
                 
                 <!-- Иконка даты -->
                 <img src="https://static.tildacdn.com/tild6365-6666-4866-b838-623162336633/_.svg" 
@@ -1360,11 +1627,7 @@ img {
                 <img src="https://i.ibb.co/bMTtcHVL/image.png" 
                      class="screen-2-image inverted-photo" 
                      alt="Перевернутая фотография">
-                
-                <!-- Декоративный цветок -->
-                <img src="https://optim.tildacdn.com/tild3334-3564-4364-a361-303830323930/-/resize/310x/-/format/webp/Rectangle_988_1.png.webp" 
-                     class="screen-2-image flower" 
-                     alt="Декоративный цветок">
+               
             </div>
         </div>
     </div>
@@ -1507,9 +1770,68 @@ img {
              class="decorative-flower" 
              alt="">
         <div class="section-content">
-            <h2 class="section-title">Контакты</h2>
-            <div class="contacts-content">
+            <!-- Основная картинка -->
+            <img src="https://static.tildacdn.com/tild6139-6666-4733-b139-326632313937/photo.svg" 
+                 class="contacts-main-image"
+                 alt="Контактная информация">
+            
+            <!-- Текст под картинкой -->
+            <div class="contacts-subtext">
+                <p>Если у вас появятся вопросы по поводу нашего торжества, свяжитесь с нами, пожалуйста.</p>
+            </div>
+            
+            <!-- Блок с контактами -->
+            <div class="contacts-wrapper">
+                <!-- Левая картинка -->
+                <img src="https://optim.tildacdn.com/tild3565-3836-4463-b933-313961393637/-/resize/240x/-/format/webp/60241-peach-rose-bab.png.webp" 
+                     class="contacts-left-image"
+                     alt="Цветочный декор">
                 
+                <!-- Контактная информация -->
+                <div class="contacts-info">
+                    <div class="contact-person">
+                        <img src="https://i.ibb.co/V0ZgKxDm/kristina.png" class="namekristina" alt="">
+                        <div class="contact-phone">+375 (29) 292-66-98</div>
+                    </div>
+                    <div class="contact-person">
+                        <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya" alt="">
+                        <div class="contact-phone">+375 (29) 869-98-20</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Декоративная картинка -->
+            <img src="https://static.tildacdn.com/tild3933-3134-4336-a365-623237336432/_________.svg" 
+                 class="contacts-decorative-image"
+                 alt="Декоративная линия">
+            
+            <!-- Текст "С любовью" -->
+            <img src="https://i.ibb.co/p6hqRM32/with-love.png" 
+                 class="with-love-image"
+                 alt="С любовью">
+				 <div class="footer">
+                        <img src="https://optim.tildacdn.com/tild6166-6239-4530-b163-613361313630/-/resize/390x/-/format/webp/Rectangle_1002.png.webp" 
+                     class="contacts-background-image"
+                     alt="Фоновое изображение">
+            <img src="https://optim.tildacdn.com/tild3032-6665-4434-a463-353064363330/-/resize/240x/-/format/webp/Rectangle_1014.png.webp" 
+                         class="gallery-image gallery-img-1"
+                         alt="Фото 1">
+                    <img src="https://optim.tildacdn.com/tild3133-3934-4739-b865-636535383766/-/resize/170x/-/format/webp/nastyaulagasheva_mag.png.webp" 
+                         class="gallery-image gallery-img-2"
+                         alt="Фото 2">
+                    <img src="https://optim.tildacdn.com/tild3738-6636-4530-a434-303765316262/-/resize/190x/-/format/webp/Rectangle_1015.png.webp" 
+                         class="gallery-image gallery-img-3"
+                         alt="Фото 3">
+                    <img src="https://optim.tildacdn.com/tild6565-6665-4365-a161-666362303133/-/resize/240x/-/format/webp/Rectangle_1016.png.webp" 
+                         class="gallery-image gallery-img-4"
+                         alt="Фото 4">
+                    <img src="https://optim.tildacdn.com/tild3935-6234-4931-b339-313932663937/-/resize/100x/-/format/webp/Rectangle_1017.png.webp" 
+                         class="gallery-image gallery-img-5"
+                         alt="Фото 5">
+                    <img src="https://optim.tildacdn.com/tild6633-3439-4237-a535-343062306436/-/resize/70x/-/format/webp/nastyaulagasheva_mag.png.webp" 
+                         class="gallery-image gallery-img-6"
+                         alt="Фото 6">
+</div>
 
             </div>
         </div>

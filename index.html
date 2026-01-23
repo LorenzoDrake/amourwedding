@@ -26,7 +26,7 @@ body {
 
 .main-wrapper {
     width: 100%;
-    min-height: 300vh;
+    min-height: 400vh;
 }
 
 /* ===== ПЕРВЫЙ ЭКРАН ===== */
@@ -232,7 +232,7 @@ body {
     width: 100%;
     min-height: 200vh;
     height: auto;
-    background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 29%, #133d1f 29%, #133d1f 100%);
+    background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 29%, #143e1f 29%, #143e1f 100%);
     display: flex;
     justify-content: center;
     position: relative;
@@ -304,21 +304,20 @@ body {
     object-fit: cover;
     width: 100vw;
     height: 35%;
-    bottom: 10%;
+    bottom: 3%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 7;
-    /* Добавляем градиентную маску */
-    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 95%);
-    mask-image: linear-gradient(to bottom, black 70%, transparent 95%);
 }
 
 .screen-2-image.inverted-photo {
     width: 100vw;
-    bottom: 5%;
+    bottom: -7%;
     left: 50%;
-    transform: translateX(-50%) rotate(180deg);
+    transform: translateX(-50%);
     z-index: 7;
+    -webkit-filter: drop-shadow(5px 5px 15px #222);
+    filter: drop-shadow(5px 5px 15px #222);
 }
 
 .screen-2-image.flower {
@@ -327,6 +326,14 @@ body {
     top: 22%;
     transform: translateX(-50%);
     z-index: 7;
+}
+
+.screen-4-image.photo {
+    width: 100vw;
+    top: 25%;
+    left: 0%;
+    z-index: 6;
+	margin-bottom: -15px;
 }
 
 .location-text {
@@ -357,6 +364,337 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+/* ===== НОВЫЕ БЛОКИ ===== */
+.screen-3, .screen-4, .screen-5 {
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.screen-3, .screen-4 {
+    background-color: #f0f0ee;
+}
+
+.screen-5 {
+    background-color: #36543d;
+}
+
+.section-content {
+    width: 100%;
+    /*padding: 60px 40px;*/
+    text-align: center;
+    position: relative;
+}
+
+.section-title {
+    font-family: 'Allura', cursive;
+    font-size: 52px;
+    color: #36543d;
+    margin-bottom: 50px;
+    position: relative;
+    display: inline-block;
+}
+
+.screen-5 .section-title {
+    color: #f2f2f2;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background-color: #36543d;
+    opacity: 0.3;
+}
+
+.screen-5 .section-title::after {
+    background-color: #f2f2f2;
+}
+
+/* Программа дня */
+.program-image {
+    margin: 0 auto;
+    display: block;
+}
+
+.program-image.title {
+    width: 300px;
+    margin-bottom: 100px;
+}
+
+.program-image.subtitle {
+    position: absolute;
+    width: 150px;
+    top: 15%;
+    left: 54%;
+}
+
+.program-image.time {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.program-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.program-timeline {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.times-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 20px;
+    padding-top: 10px;
+}
+
+.time-item {
+    margin-bottom: 80px;
+    position: relative;
+}
+
+.time-item:last-child {
+    margin-bottom: 0;
+}
+
+.vertical-line {
+    position: absolute;
+    left: 140px;
+    top: 25px;
+    bottom: 45px;
+    width: 1px;
+    background-color: #000;
+}
+
+.line-dot {
+    position: absolute;
+    left: 138px;
+    width: 6px;
+    height: 6px;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.dot-1 { top: 25px; }
+.dot-2 { top: 150px; }
+.dot-3 { top: 275px; }
+
+.events-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 40px;
+    margin-top: -5px;
+}
+
+.event-item {
+    margin-bottom: 60px;
+    text-align: left;
+    position: relative;
+}
+
+.event-item:last-child {
+    margin-bottom: 0;
+}
+
+.event-title {
+    font-family: Georgia, serif;
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.event-description {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: #666;
+    line-height: 1.5;
+}
+
+/* Дресс-код */
+.dress-code-content {
+    /*max-width: 800px;*/
+    margin-top: 40px;
+}
+
+.dress-code-text {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.dress-code-palette {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
+    margin-top: 50px;
+    position: relative;
+    height: 40px;
+}
+
+.color-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-left: -10px;
+    transition: transform 0.3s ease;
+}
+
+.color-item:first-child {
+    margin-left: 0;
+}
+
+.color-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    border-width: var(--t396-borderwidth, 0);
+    border-style: var(--t396-borderstyle, solid);
+    border-color: var(--t396-bordercolor, transparent);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3);
+    transition: background-color var(--t396-speedhover, 0s) ease-in-out, color var(--t396-speedhover, 0s) ease-in-out, border-color var(--t396-speedhover, 0s) ease-in-out, box-shadow var(--t396-shadowshoverspeed, 0.2s) ease-in-out;
+}
+
+.color-name {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: #36543d;
+    font-weight: bold;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Контакты */
+.contacts-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-person {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-person h3 {
+    font-family: 'Allura', cursive;
+    font-size: 42px;
+    color: #f2f2f2;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: center;
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+    opacity: 0.8;
+}
+
+.contact-details {
+    text-align: left;
+}
+
+.contact-details p {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #f2f2f2;
+    margin-bottom: 5px;
+}
+
+.contact-note {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: rgba(242, 242, 242, 0.8);
+    font-style: italic;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Декоративные элементы */
+.decorative-flower {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.1;
+}
+
+.screen-3 .decorative-flower {
+    width: 300px;
+    bottom: -50px;
+    right: -50px;
+    transform: rotate(45deg);
+}
+
+.screen-4 .decorative-flower {
+    width: 250px;
+    top: -30px;
+    left: -30px;
+    transform: rotate(-15deg);
+}
+
+.screen-5 .decorative-flower {
+    width: 280px;
+    bottom: -40px;
+    left: -40px;
+    transform: rotate(135deg);
+    filter: invert(1) brightness(2);
+    opacity: 0.15;
+}
+
+.program-image.flower {
+    width: 350px;
+    position: absolute;
+    transform: rotate(180deg);
+}
+
+.dresscode.title {
+    width: 450px;
+}
+
+.dresscode.title-eng {
+    width: 250px;
+}
+
 /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
 @media (max-width: 768px) {
     body {
@@ -377,7 +715,7 @@ body {
         min-height: 160vh;
         height: auto;
         padding: 0;
-        background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 28%, #133d1f 28%, #133d1f 100%);
+        background: linear-gradient(to bottom, rgb(54 84 61) 0%, rgb(54 84 61) 28%, #143e1f 28%, #143e1f 100%);
     }
     
     .container, .container-2 {
@@ -518,13 +856,12 @@ body {
     
     .screen-2-image.map-photo {
         width: 100%;
-        bottom: 15%;
+        bottom: 5%;
     }
     
     .screen-2-image.inverted-photo {
         width: 300%;
-        bottom: 5%;
-        margin-bottom: 50px;
+        bottom: 0%;
     }
     
     .screen-2-image.flower {
@@ -532,6 +869,14 @@ body {
         top: 20%;
         left: 0;
         transform: translateX(-25%);
+    }
+
+    .screen-4-image.photo {
+        width: 300%;
+		position: relative;
+        margin-bottom: -5%;
+        top: 24%;
+		transform: translateX(-50%);
     }
     
     .restaurant-name {
@@ -544,6 +889,167 @@ body {
         top: 54%;
         font-size: 14px;
         max-width: 300px;
+    }
+    
+    /* Мобильные стили для программы дня */
+    .section-content {
+        padding: 0px 20px;
+        width: 95%;
+    }
+    
+    .section-title {
+        font-size: 42px;
+        margin-bottom: 40px;
+    }
+    
+    .program-image.title {
+        width: 250px;
+        margin-bottom: 60px;
+    }
+    
+    .program-image.subtitle {
+        position: absolute;
+        top: 6%;
+        left: 59%;
+        width: 120px;
+        margin: 0 auto 40px;
+        transform: none;
+        display: block;
+    }
+    
+    .program-image.time {
+        width: 80px;
+        margin-right: 15px;
+    }
+    
+    .program-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .program-timeline {
+        width: 100%;
+        justify-content: flex-start;
+        position: relative;
+    }
+    
+    .times-column {
+        margin-right: 15px;
+        padding-top: 8px;
+    }
+    
+    .time-item {
+        margin-bottom: 60px;
+    }
+    
+    .vertical-line {
+        left: 110px;
+        top: 20px;
+        bottom: 55px;
+    }
+    
+    .line-dot {
+        left: 108px;
+    }
+    
+    .dot-1 { top: 20px; }
+    .dot-2 { top: 120px; }
+    .dot-3 { top: 220px; }
+    
+    .events-column {
+        margin-left: 30px;
+        margin-top: 10px;
+        flex: 1;
+        min-width: 200px;
+    }
+    
+    .event-item {
+        margin-bottom: 45px;
+    }
+    
+    .event-title {
+        font-size: 22px;
+    }
+    
+    .event-description {
+        font-size: 16px;
+    }
+    
+    /* Мобильные стили для остальных блоков */
+    .dress-code-text {
+        font-size: 16px;
+    }
+    
+    .dress-code-palette {
+        height: 35px;
+        margin-bottom: 70px;
+        margin-top: 50px;
+    }
+    
+    .color-item {
+        margin-left: -8px;
+    }
+    
+    .color-circle {
+        width: 35px;
+        height: 35px;
+        border-width: 2px;
+    }
+    
+    .color-name {
+        font-size: 14px;
+    }
+    
+    .dress-code-tips {
+        padding: 20px;
+    }
+    
+    .dress-code-tips h3 {
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .dress-code-tips li {
+        font-size: 16px;
+        padding-left: 25px;
+    }
+    
+    .contact-person {
+        padding: 25px 20px;
+    }
+    
+    .contact-person h3 {
+        font-size: 36px;
+    }
+    
+    .contact-details p {
+        font-size: 18px;
+    }
+    
+    .contact-note {
+        font-size: 16px;
+    }
+    
+    .decorative-flower {
+        display: none;
+    }
+    
+    .program-image.flower {
+        width: 250px;
+        top: 0%;
+        left: 55%;
+    }
+    
+    .dresscode.title {
+        margin-top: 180px;
+        margin-right: 75px;
+        width: 250px;
+    }
+
+    .dresscode.title-eng {
+        margin-top: -50px;
+        width: 300px;
     }
 }
 
@@ -568,8 +1074,177 @@ body {
 img {
     max-width: none;
 }
+
+/* Стили для наложенных картинок */
+.overlapping-images-container {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    position: relative;
+    height: 300px;
+    overflow: visible;
+}
+
+.image-stack {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.stacked-image {
+    position: absolute;
+    object-fit: contain;
+}
+
+
+/* Позиционирование каждой картинки с небольшим смещением */
+.image-1 {
+	height: 450px;
+	left: -30%;
+	top: -5%;
+	z-index: 6;
+}
+
+.image-2 {
+	height: 450px;
+	left: -5%;
+	top: 15%;
+	z-index: 7;
+}
+
+.image-3 {
+	height: 450px;
+	left: 15%;
+	top: -10%;
+	z-index: 5;
+}
+
+.image-4 {
+	height: 400px;
+	left: 40%;
+	top: 0;
+	z-index: 6;
+}
+
+.image-5 {
+	height: 600px;
+	left: 40%;
+	top: 0;
+	z-index: 7;
+}
+
+.image-6 {
+	height: 400px;
+	left: 68%;
+	top: -6%;
+	z-index: 5;
+}
+
+.image-7 {
+	height: 380px;
+	right: 20%;
+	top: 15%;
+	z-index: 6;
+}
+
+.image-bg1 {
+	height: 300px;
+	left: -35%;
+	bottom: -10%;
+	z-index: 2;
+}
+
+.image-bg2 {
+	height: 300px;
+	right: -30%;
+	bottom: 5%;
+	transform: rotate(102deg)
+	z-index: 3;
+}
+
+/* Мобильная версия для наложенных картинок */
+@media (max-width: 768px) {
+    .overlapping-images-container {
+        height: 550px;
+        margin-top: 30px;
+        margin-bottom: -20px;
+    }
+    
+    .image-stack {
+        height: 550px;
+    }
+    
+    /* Уменьшаем размеры картинок на мобильных */
+    .stacked-image {
+        border-width: 2px;
+    }
+    
+    .image-1 {
+        height: 450px;
+        left: -30%;
+        top: -5%;
+    }
+    
+    .image-2 {
+		height: 450px;
+        left: -5%;
+        top: 15%;
+    }
+    
+    .image-3 {
+		height: 450px;
+        left: 15%;
+        top: -10%;
+    }
+    
+    .image-4 {
+		height: 400px;
+        left: 40%;
+        top: 0;
+    }
+    
+    .image-5 {
+        height: 600px;
+        left: 40%;
+        top: 0;
+    }
+    
+    .image-6 {
+        height: 400px;
+        left: 68%;
+        top: -6%;
+    }
+    
+    .image-7 {
+		height: 380px;
+		right: -10%;
+		top: 15%;
+		z-index: 6;
+    }
+	
+	.image-bg1 {
+        height: 300px;
+        left: -35%;
+        bottom: -10%;
+		z-index: 2;
+    }
+	
+	.image-bg2 {
+        height: 300px;
+        right: -30%;
+        bottom: 5%;
+        transform: rotate(102deg)
+		z-index: 3;
+    }
+}
+
+}
+
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
@@ -656,7 +1331,7 @@ img {
                      alt="Текст приглашения">
                 
                 <!-- Фотография для второго экрана -->
-                <img src="https://i.ibb.co/wh4bj16d/image.png" 
+                <img src="https://i.ibb.co/nsQx8rFW/image.png" 
                      class="screen-2-image photo" 
                      alt="Фотография">
                 
@@ -682,7 +1357,7 @@ img {
                      alt="Фото места">
                 
                 <!-- Перевернутая фотография -->
-                <img src="https://i.ibb.co/wh4bj16d/image.png" 
+                <img src="https://i.ibb.co/bMTtcHVL/image.png" 
                      class="screen-2-image inverted-photo" 
                      alt="Перевернутая фотография">
                 
@@ -690,6 +1365,152 @@ img {
                 <img src="https://optim.tildacdn.com/tild3334-3564-4364-a361-303830323930/-/resize/310x/-/format/webp/Rectangle_988_1.png.webp" 
                      class="screen-2-image flower" 
                      alt="Декоративный цветок">
+            </div>
+        </div>
+    </div>
+    
+    <!-- ТРЕТИЙ ЭКРАН: Программа дня -->
+    <div class="screen-3">
+        <img src="https://static.tildacdn.com/tild3334-3564-4364-a361-303830323930/-/resize/310x/-/format/webp/Rectangle_988_1.png.webp" 
+             class="decorative-flower" 
+             alt="">
+        <div class="section-content">
+            
+            <!-- Заголовок "Программа" -->
+            <img src="https://static.tildacdn.com/tild6137-6338-4531-b264-363435663838/_.svg" 
+                 class="program-image title" 
+                 alt="Программа">
+            
+            <!-- Подзаголовок "Тайминг" -->
+            <img src="https://static.tildacdn.com/tild3033-6465-4962-b033-346636643135/timing.svg" 
+                 class="program-image subtitle" 
+                 alt="Тайминг">
+            
+            <!-- Программа дня с таймлайном -->
+            <div class="program-container">
+                <div class="program-timeline">
+                    <div class="times-column">
+                        <div class="time-item">
+                            <img src="https://static.tildacdn.com/tild6239-3961-4162-b739-653330653631/15_00.svg" 
+                                 class="program-image time" 
+                                 alt="15:00">
+                        </div>
+                        <div class="time-item">
+                            <img src="https://static.tildacdn.com/tild6239-3961-4162-b739-653330653631/15_00.svg" 
+                                 class="program-image time" 
+                                 alt="16:00">
+                        </div>
+                        <div class="time-item">
+                            <img src="https://static.tildacdn.com/tild6239-3961-4162-b739-653330653631/15_00.svg" 
+                                 class="program-image time" 
+                                 alt="17:00">
+                        </div>
+                    </div>
+                    
+                    <!-- Вертикальная линия с точками -->
+                    <div class="vertical-line"></div>
+                    <div class="line-dot dot-1"></div>
+                    <div class="line-dot dot-2"></div>
+                    <div class="line-dot dot-3"></div>
+                    
+                    <!-- Описание событий -->
+                    <div class="events-column">
+                        <div class="event-item">
+                            <h3 class="event-title">Сбор гостей</h3>
+                        </div>
+                        <div class="event-item">
+                            <h3 class="event-title">Торжественная церемония</h3>
+                        </div>
+                        <div class="event-item">
+                            <h3 class="event-title">Начало праздничного ужина</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<!-- ЧЕТВЕРТЫЙ ЭКРАН: Дресс-код -->
+<div class="screen-4">
+    <img src="https://static.tildacdn.com/tild3334-3564-4364-a361-303830323930/-/resize/310x/-/format/webp/Rectangle_988_1.png.webp" 
+         class="decorative-flower" 
+         alt="">
+    <div class="section-content">
+        <img src="https://optim.tildacdn.com/tild3330-3733-4534-a235-643932613366/-/resize/400x/-/format/webp/Rectangle_987.png.webp" 
+             class="program-image flower" 
+             alt="flower">
+        <img src="https://i.ibb.co/gbk9Jf8w/Dress-Code.png" 
+             class="dresscode title" 
+             alt="dresscode">
+        <img src="https://i.ibb.co/zhS9Vnm5/Dress-Code2.png" 
+             class="dresscode title-eng" 
+             alt="dresscode">
+        <div class="dress-code-content">
+            <p class="dress-code-text">Мы будем очень рады, если вы поддержите цветовую гамму нашего мероприятия!</p>
+            <p class="dress-code-text">Для леди — вечерние и коктейльные платья и костюмы в оттенках свадьбы</p>
+            <p class="dress-code-text">Для мужчин — костюмы или casual стиль, в черном или в оттенках свадьбы</p>
+            <div class="dress-code-palette">
+                <div class="color-item">
+                    <div class="color-circle" style="background-color: #e0cfb5;"></div>
+                </div>
+                <div class="color-item">
+                    <div class="color-circle" style="background-color: #e0be86;"></div>
+                </div>
+                <div class="color-item">
+                    <div class="color-circle" style="background-color: #909e8d;"></div>
+                </div>
+                <div class="color-item">
+                    <div class="color-circle" style="background-color: #535e2c;"></div>
+                </div>
+            </div>
+            
+            <!-- Контейнер для наложенных картинок -->
+            <div class="overlapping-images-container">
+                <div class="image-stack">
+                    <img src="https://optim.tildacdn.com/tild6664-6331-4135-b233-653139316434/-/resize/300x/-/format/webp/Rectangle_1021.png.webp" 
+                         class="stacked-image image-1" 
+                         alt="Пример стиля">
+                    <img src="https://optim.tildacdn.com/tild3532-3237-4131-a537-636335623635/-/resize/240x/-/format/webp/Rectangle_42_1.png.webp" 
+                         class="stacked-image image-2" 
+                         alt="Пример стиля">
+                    <img src="https://optim.tildacdn.com/tild3536-6332-4839-a462-343036313033/-/resize/360x/-/format/webp/Rectangle_997.png.webp" 
+                         class="stacked-image image-3" 
+                         alt="Пример стиля">
+                    <img src="https://optim.tildacdn.com/tild6662-3464-4139-b938-323036616561/-/resize/220x/-/format/webp/Rectangle_997_1.png.webp" 
+                         class="stacked-image image-4" 
+                         alt="Пример стиля">
+                    <img src="https://optim.tildacdn.com/tild6135-3034-4435-b835-663662326235/-/resize/360x/-/format/webp/Rectangle_1019.png.webp" 
+                         class="stacked-image image-5" 
+                         alt="Пример стиля">
+                    <img src="https://optim.tildacdn.com/tild3639-6637-4161-a363-363139616330/-/resize/230x/-/format/webp/noroot.png.webp" 
+                         class="stacked-image image-6" 
+                         alt="Пример стиля">
+                    <img src="https://optim.tildacdn.com/tild3533-3233-4739-a434-666137303135/-/resize/220x/-/format/webp/Rectangle_1023.png.webp" 
+                         class="stacked-image image-7" 
+                         alt="Пример стиля">
+					<img src="https://optim.tildacdn.com/tild3566-3433-4266-b466-363338303431/-/resize/550x/-/format/webp/Mask_group.png.webp" 
+                         class="stacked-image image-bg1" 
+                         alt="Пример стиля">
+					<img src="https://optim.tildacdn.com/tild6434-3430-4839-a633-373738643433/-/resize/590x/-/format/webp/Mask_group_1.png.webp" 
+                         class="stacked-image image-bg2" 
+                         alt="Пример стиля">
+                </div>
+            </div>
+        <img src="https://i.ibb.co/CKkS4B28/image.png" class="screen-4-image photo" alt="Фотография">
+		</div>
+    </div>
+</div>
+    
+    <!-- ПЯТЫЙ ЭКРАН: Контакты -->
+    <div class="screen-5">
+        <img src="https://static.tildacdn.com/tild3334-3564-4364-a361-303830323930/-/resize/310x/-/format/webp/Rectangle_988_1.png.webp" 
+             class="decorative-flower" 
+             alt="">
+        <div class="section-content">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contacts-content">
+                
+
             </div>
         </div>
     </div>
@@ -702,28 +1523,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const container2 = document.querySelector('.container-2');
     const isMobile = window.innerWidth <= 768;
     
-    // Функция для масштабирования контейнера первого экрана
-    function scaleContainer() {
-        if (isMobile) {
-            container.style.transform = 'none';
-            container2.style.transform = 'none';
-            return;
-        }
-        
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        const containerWidth = 1200;
-        const containerHeight = 800;
-        const scaleX = windowWidth / containerWidth;
-        const scaleY = windowHeight / containerHeight;
-        const scale = Math.min(scaleX, scaleY) * 0.9;
-        
-        container.style.transform = `scale(${scale})`;
-        container2.style.transform = `scale(${scale})`;
-    }
-    
-    scaleContainer();
-    window.addEventListener('resize', scaleContainer);
+
     
     // Блокировка масштабирования на мобильных
     document.addEventListener('touchstart', function(e) {

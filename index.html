@@ -132,14 +132,14 @@ body {
 }
 
 .bottom-text p {
-    color: #f2f2f2;
+    color: #dbdecf;
     font-family: Georgia, serif;
     font-size: 22px;
     line-height: 1.4;
     max-width: 800px;
     margin: 50px auto;
     padding: 0 20px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    /*text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);*/
 }
 
 .cloud {
@@ -951,11 +951,13 @@ body {
     .restaurant-name {
         font-size: 32px;
         width: 100%;
+		top: 26%;
     }
     
     .restaurant-address {
         font-size: 14px;
         max-width: 300px;
+		top: 36%;
     }
     
     /* Мобильные стили для программы дня */
@@ -1380,8 +1382,8 @@ img {
 }
 
 .contact-phone {
-    font-family: Georgia, serif;
-    font-size: 22px;
+    font-family: fangsong;
+    font-size: 25px;
     color: #f2f2f2;
     letter-spacing: 0.5px;
 }
@@ -1547,7 +1549,8 @@ img {
     }
     
     .contact-phone {
-        font-size: 18px;
+        font-size: 22px;
+		text-decoration: none;
     }
     
     .contacts-decorative-image {
@@ -1661,7 +1664,7 @@ img {
 @media (max-width: 768px) {
     .map-button-container {
 		position: relative;
-        top: 47%;
+        top: 47% !important;
     }
     
     .map-button {
@@ -2032,7 +2035,9 @@ img {
                         <div class="contact-phone">+375 (29) 292-66-98</div>
                     </div>
                     <div class="contact-person">
-                        <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya" alt="">
+                        <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya" alt="" style="
+    transform: translateX(0);
+">
                         <div class="contact-phone">+375 (29) 869-98-20</div>
                     </div>
                 </div>

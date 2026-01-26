@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Invitation</title>
 <style>
 * {
@@ -457,7 +457,7 @@ body {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-	transform: translateX(20%);
+	/*transform: translateX(20%);*/
 }
 
 .program-timeline {
@@ -485,10 +485,8 @@ body {
 
 .vertical-line {
     position: absolute;
-    left: 140px;
-    top: 25px;
-    bottom: 30px;
     width: 1px;
+	height: 100%;
     background-color: #000;
 }
 
@@ -732,6 +730,10 @@ body {
         padding: 0;
         background: #143e1f;
     }
+	
+	.container {
+		max-width: 400px;
+	}
     
     .container, .container-2 {
         width: 100vw !important;
@@ -744,6 +746,10 @@ body {
         height: 100% !important;
     }
     
+	.scene {
+		max-width: 400px;
+	}
+	
     .scene, .scene-2 {
         width: 100vw;
         height: 100%;
@@ -752,6 +758,7 @@ body {
     .scene-2 {
         height: 100%;
         position: relative;
+		text-align: center;
     }
 
 .dress-code-content {
@@ -870,7 +877,7 @@ body {
     }
     
     .screen-2-image.photo {
-        width: 300%;
+        width: 1200px;
         bottom: 0%;
     }
     
@@ -890,7 +897,7 @@ body {
     }
     
     .screen-2-image.inverted-photo {
-        width: 300%;
+        width: 1200px;
         bottom: 0%;
     }
     
@@ -906,13 +913,16 @@ body {
 	}
 
     .screen-4-image.photo {
-		width: 300%;
+		width: 1200px;
         position: absolute;
         margin-bottom: -5%;
         bottom: 0;
-        transform: translateX(-50%);
+        /*transform: translateX(-50%);*/
     }
-    
+    .screen-5 .section-content {
+		max-width: 450px;
+	}
+	
     .restaurant-name {
         font-size: 32px;
         width: 100%;
@@ -962,7 +972,8 @@ body {
     
     .program-timeline {
         width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
+		margin-left: 50px;
         position: relative;
     }
     
@@ -976,23 +987,34 @@ body {
     }
     
     .vertical-line {
-        left: 110px;
-        top: 20px;
-        bottom: 55px;
+		transform: translateX(2px);
+		top: 22px;
+		height: 198px;
     }
     
     .line-dot {
-        left: 108px;
+        left: 0px;
     }
     
-    .dot-1 { top: 20px; }
-    .dot-2 { top: 120px; }
-    .dot-3 { top: 220px; }
+    .dot-1 {
+		position: static;
+        margin-top: 22px;
+		margin-bottom: 90px;
+		margin-right: 2px;
+	}
+    .dot-2 {
+		position: static;
+		margin-bottom: 90px;
+	}
+    .dot-3 {
+		position: static;
+	}
     
     .events-column {
         margin-left: 30px;
         margin-top: 10px;
         flex: 1;
+		max-width: 200px;
         min-width: 200px;
     }
     
@@ -1418,7 +1440,7 @@ img {
     display: block;
     left: 50%;
     transform: translate(-50%);
-    bottom: 5%;
+    bottom: 0%;
 	z-index: 9999;
 }
     .contacts-main-image {
@@ -1469,42 +1491,42 @@ img {
     
     .gallery-img-1 {
 		width: 140px;
-        bottom: 4%;
+        bottom: 0%;
         left: 0%;
         transform: rotate(180deg);
     }
     
     .gallery-img-2 {
         width: 150px;
-        bottom: 7%;
+        bottom: 3%;
         right: -7%;
         transform: rotate(320deg);
     }
     
     .gallery-img-3 {
 		width: 130px;
-        bottom: 2%;
+        bottom: -2%;
         right: 2%;
         transform: rotate(320deg);
     }
     
     .gallery-img-4 {
 		width: 150px;
-        bottom: 2%;
+        bottom: -2%;
         right: 35%;
         transform: rotate(180deg);
     }
     
     .gallery-img-5 {
 		width: 55px;
-        bottom: 20%;
+        bottom: 16%;
         left: -5%;
         transform: rotate(0deg);
     }
     
     .gallery-img-6 {
 		width: 55px;
-        bottom: 28%;
+        bottom: 24%;
         right: 0%;
         transform: rotate(0deg);
     }
@@ -1512,6 +1534,74 @@ img {
 
 }
 
+/* Стили для кнопки "Место на карте" */
+.map-button-container {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    z-index: 8;
+    top: 38%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.map-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #4a6741 0%, #36543d 100%);
+    color: #f2f2f2;
+    text-decoration: none;
+    font-family: Georgia, serif;
+    font-size: 18px;
+    border-radius: 30px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    margin-top: 10px;
+}
+
+.map-button:hover {
+    background: linear-gradient(135deg, #5a7a51 0%, #44654b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.map-button:active {
+    transform: translateY(0);
+}
+
+.map-icon {
+    font-size: 20px;
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+.map-text {
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+/* Мобильная версия кнопки */
+@media (max-width: 768px) {
+    .map-button-container {
+		position: relative;
+        top: 45%;
+    }
+    
+    .map-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        gap: 8px;
+    }
+    
+    .map-icon {
+        font-size: 18px;
+    }
+}
 
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
@@ -1622,7 +1712,14 @@ img {
                 
                 <!-- Адрес ресторана -->
                 <div class="location-text restaurant-address">Брестская область, город Ивацевичи, ул. Ленина 8а</div>
-                
+                <div class="map-button-container">
+					<a href="https://yandex.ru/maps/?text=Брестская+область+город+Ивацевичи+ул.+Ленина+8а&z=16" 
+					   target="_blank" 
+					   class="map-button"
+					   onclick="handleMapClick(event)">
+						<span class="map-text">Место на карте</span>
+					</a>
+				</div>
                 <!-- Фото карты/места -->
                 <img src="https://i.ibb.co/WNRXcwVv/Romi.png" 
                      class="screen-2-image map-photo" 
@@ -1674,13 +1771,13 @@ img {
                                  alt="17:00">
                         </div>
                     </div>
-                    
+                    <div class="dot-line-column">
                     <!-- Вертикальная линия с точками -->
                     <div class="vertical-line"></div>
                     <div class="line-dot dot-1"></div>
                     <div class="line-dot dot-2"></div>
                     <div class="line-dot dot-3"></div>
-                    
+                    </div>
                     <!-- Описание событий -->
                     <div class="events-column">
                         <div class="event-item">
@@ -1877,6 +1974,45 @@ function scrollToSecondScreen() {
         behavior: 'smooth',
         block: 'start'
     });
+}
+
+// Улучшенная версия функции
+function handleMapClick(event) {
+    const address = "Брестская область, город Ивацевичи, ул. Ленина 8а";
+    const encodedAddress = encodeURIComponent(address);
+    
+    // Если это мобильное устройство
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        event.preventDefault();
+        
+        // URL для разных карт
+        const urls = {
+            yandexApp: `yandexmaps://maps.yandex.ru/?text=${encodedAddress}`,
+            yandexWeb: `https://yandex.ru/maps/?text=${encodedAddress}&z=16`,
+            googleMaps: `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`
+        };
+        
+        // Пробуем открыть приложение Яндекс Карт
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = urls.yandexApp;
+        
+        // Добавляем iframe на страницу
+        document.body.appendChild(iframe);
+        
+        // Через 500ms проверяем, открылось ли приложение
+        setTimeout(function() {
+            document.body.removeChild(iframe);
+            
+            // Если пользователь все еще на странице, открываем Яндекс Карты в браузере
+            setTimeout(function() {
+                window.location.href = urls.yandexWeb;
+            }, 100);
+        }, 500);
+        
+        return false;
+    }
+    // На компьютерах - обычная ссылка на Яндекс Карты
 }
 </script>
 

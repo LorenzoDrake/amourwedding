@@ -368,7 +368,7 @@ body {
 }
 
 .restaurant-name {
-    top: 28%;
+    top: 24%;
     font-size: 48px;
     font-weight: 500;
     letter-spacing: 2px;
@@ -376,7 +376,7 @@ body {
 }
 
 .restaurant-address {
-    top: 37%;
+    top: 32%;
     font-size: 22px;
     font-family: Georgia, serif;
     line-height: 1.4;
@@ -1357,15 +1357,19 @@ img {
     width: 180px;
     height: auto;
 	position: absolute;
+	left: 0;
+    transform: rotate(67deg);
 }
 
 .contacts-info {
     display: flex;
     flex-direction: column;
+	align-items: flex-end;
+    width: 100%;
 }
 
 .contact-person {
-    text-align: center;
+    text-align: end;
 }
 
 .contact-person h3 {
@@ -1383,15 +1387,15 @@ img {
 }
 
 .contacts-decorative-image {
-    width: 250px;
+    width: 350px;
     margin: 30px auto;
     display: block;
     opacity: 0.9;
 }
 
 .with-love-image {
-    width: 200px;
-    margin: 20px auto 50px;
+    width: 400px;
+    margin: 90px auto 0px;
     display: block;
 }
 
@@ -1409,6 +1413,7 @@ img {
     height: auto;
     display: block;
 	bottom: 0;
+	z-index: 9999;
 }
 
 .gallery-image {
@@ -1454,6 +1459,48 @@ img {
     width: 50px;
 	bottom: 5%;
 }
+
+    .gallery-img-1 {
+		width: 180px;
+        bottom: 0%;
+        left: -20%;
+        transform: rotate(180deg);
+    }
+    
+    .gallery-img-2 {
+        width: 190px;
+        bottom: 3%;
+        right: -10%;
+        transform: rotate(320deg);
+    }
+    
+    .gallery-img-3 {
+		width: 170px;
+        bottom: -2%;
+        right: 7%;
+        transform: rotate(320deg);
+    }
+    
+    .gallery-img-4 {
+		width: 190px;
+        bottom: -2%;
+        right: 30%;
+        transform: rotate(180deg);
+    }
+    
+    .gallery-img-5 {
+		width: 95px;
+        bottom: 16%;
+        left: 0%;
+        transform: rotate(0deg);
+    }
+    
+    .gallery-img-6 {
+		width: 95px;
+        bottom: 24%;
+        right: -5%;
+        transform: rotate(0deg);
+    }
 
 /* Мобильная версия для контактов */
 @media (max-width: 768px) {
@@ -1683,6 +1730,8 @@ img {
 /* Убираем лишние отступы */
 .screen-5 {
     margin-bottom: 0;
+	width: 100%;
+    max-width: 600px;
 }
 
 </style>
@@ -1794,7 +1843,12 @@ img {
                 
                 <!-- Адрес ресторана -->
                 <div class="location-text restaurant-address">Брестская область, город Ивацевичи, ул. Ленина 8а</div>
-                <div class="map-button-container">
+                <div class="map-button-container" style="
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translateX(-50%);
+">
 					<a href="https://yandex.ru/maps/?text=Брестская+область+город+Ивацевичи+ул.+Ленина+8а&z=16" 
 					   target="_blank" 
 					   class="map-button"

@@ -286,8 +286,8 @@ body {
 
 .screen-2-image.title {
     width: 300px;
-    /*left: 50%;*/
-    /*transform: translateX(-50%);*/
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .screen-2-image.text {
@@ -1744,48 +1744,49 @@ img {
 /* Класс для скрытия элементов изначально */
 .fade-in-element {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    translate: 0 50px;
+    transition: opacity 2s ease, scale 1.5s ease, translate 1.5s ease;
 }
 
 /* Класс для активации анимации при скролле */
 .fade-in-element.visible {
     opacity: 1;
-    transform: translateY(0);
+	translate: 0 0;
+    /*transform: translateY(0);*/
 }
 
 /* Дополнительные варианты анимаций */
-/*.fade-in-left {
+.fade-in-left {
     opacity: 0;
-    transform: translateX(-30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    translate: -50px 0;
+    transition: opacity 2s ease, translate 2s ease;
 }
-*/
-/*.fade-in-left.visible {
-    opacity: 1;
-    transform: translateX(0);
-}*/
 
-/*.fade-in-right {
+.fade-in-left.visible {
+    opacity: 1;
+    translate: 0 0;
+}
+
+.fade-in-right {
     opacity: 0;
-    transform: translateX(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}*/
+    translate: 50px 0;
+    transition: opacity 2s ease, translate 2s ease;
+}
 
 .fade-in-right.visible {
     opacity: 1;
-    transform: translateX(0);
+    translate: 0 0;
 }
 
 .fade-in-scale {
     opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    scale: 0.8;
+    transition: opacity 1.5s ease, scale 1.5s ease;
 }
 
 .fade-in-scale.visible {
     opacity: 1;
-    transform: scale(1);
+    scale: 1;
 }
 
 /* Задержки для последовательного появления */
@@ -1864,10 +1865,10 @@ img {
                          alt="Декоративная картинка">
                     <p class="fade-in-element">Совсем скоро наступит наш<br>особенный день - наша свадьба!</p>
 					<img src="https://i.ibb.co/q3t1cdmS/6626.png" 
-                     class="screen-2-image title  fade-in-element" 
+                     class="screen-2-image title fade-in-element" 
                      alt="Дорогие гости!">
 					<img src="https://static.tildacdn.com/tild3730-6132-4438-b062-333533636231/_______________.svg" 
-                     class="screen-2-image text  fade-in-element" 
+                     class="screen-2-image text fade-in-element" 
                      alt="Текст приглашения">
 					 
                 </div>
@@ -1891,19 +1892,19 @@ img {
                 
                 <!-- Иконка даты -->
                 <img src="https://static.tildacdn.com/tild6365-6666-4866-b838-623162336633/_.svg" 
-                     class="screen-2-image date-icon" 
+                     class="screen-2-image date-icon fade-in-element" 
                      alt="Иконка даты">
                 
                 <!-- Иконка локации -->
                 <img src="https://static.tildacdn.com/tild6664-3163-4136-b336-636666613566/Location.svg" 
-                     class="screen-2-image location-icon" 
+                     class="screen-2-image location-icon fade-in-element" 
                      alt="Иконка локации">
                 
                 <!-- Название ресторана -->
-                <div class="location-text restaurant-name">ROMI Restaurant</div>
+                <div class="location-text restaurant-name fade-in-element">ROMI Restaurant</div>
                 
                 <!-- Адрес ресторана -->
-                <div class="location-text restaurant-address">Брестская область, город Ивацевичи, ул. Ленина 8а</div>
+                <div class="location-text restaurant-address fade-in-element">Брестская область, город Ивацевичи, ул. Ленина 8а</div>
                 <div class="map-button-container" style="
     position: absolute;
     top: 42%;
@@ -1912,7 +1913,7 @@ img {
 ">
 					<a href="https://yandex.ru/maps/?text=Брестская+область+город+Ивацевичи+ул.+Ленина+8а&z=16" 
 					   target="_blank" 
-					   class="map-button"
+					   class="map-button fade-in-element"
 					   onclick="handleMapClick(event)">
 						<span class="map-text">Место на карте</span>
 					</a>
@@ -1940,29 +1941,29 @@ img {
             
             <!-- Заголовок "Программа" -->
             <img src="https://static.tildacdn.com/tild6137-6338-4531-b264-363435663838/_.svg" 
-                 class="program-image title" 
+                 class="program-image title fade-in-element" 
                  alt="Программа">
             
             <!-- Подзаголовок "Тайминг" -->
             <img src="https://static.tildacdn.com/tild3033-6465-4962-b033-346636643135/timing.svg" 
-                 class="program-image subtitle" 
+                 class="program-image subtitle fade-in-element" 
                  alt="Тайминг">
             
             <!-- Программа дня с таймлайном -->
             <div class="program-container">
                 <div class="program-timeline">
                     <div class="times-column">
-                        <div class="time-item">
+                        <div class="time-item fade-in-left">
                             <img src="https://static.tildacdn.com/tild6239-3961-4162-b739-653330653631/15_00.svg" 
                                  class="program-image time" 
                                  alt="15:00">
                         </div>
-                        <div class="time-item">
+                        <div class="time-item fade-in-left">
                             <img src="https://static.tildacdn.com/tild6239-3961-4162-b739-653330653631/15_00.svg" 
                                  class="program-image time" 
                                  alt="16:00">
                         </div>
-                        <div class="time-item">
+                        <div class="time-item fade-in-left">
                             <img src="https://static.tildacdn.com/tild6239-3961-4162-b739-653330653631/15_00.svg" 
                                  class="program-image time" 
                                  alt="17:00">
@@ -1978,13 +1979,13 @@ img {
                     <!-- Описание событий -->
                     <div class="events-column">
                         <div class="event-item">
-                            <h3 class="event-title">Сбор гостей</h3>
+                            <h3 class="event-title fade-in-element">Сбор гостей</h3>
                         </div>
                         <div class="event-item">
-                            <h3 class="event-title">Торжественная церемония</h3>
+                            <h3 class="event-title fade-in-element">Торжественная церемония</h3>
                         </div>
                         <div class="event-item">
-                            <h3 class="event-title">Начало праздничного ужина</h3>
+                            <h3 class="event-title fade-in-element">Начало праздничного ужина</h3>
                         </div>
                     </div>
                 </div>
@@ -2002,26 +2003,26 @@ img {
              class="program-image flower" 
              alt="flower">
         <img src="https://i.ibb.co/gbk9Jf8w/Dress-Code.png" 
-             class="dresscode title" 
+             class="dresscode title fade-in-left" 
              alt="dresscode">
         <img src="https://i.ibb.co/zhS9Vnm5/Dress-Code2.png" 
-             class="dresscode title-eng" 
+             class="dresscode title-eng fade-in-right" 
              alt="dresscode">
         <div class="dress-code-content">
-            <p class="dress-code-text">Мы будем очень рады, если вы поддержите цветовую гамму нашего мероприятия!</p>
-            <p class="dress-code-text">Для леди — вечерние и коктейльные платья и костюмы в оттенках свадьбы</p>
-            <p class="dress-code-text">Для мужчин — костюмы или casual стиль, в черном или в оттенках свадьбы</p>
+            <p class="dress-code-text fade-in-element">Мы будем очень рады, если вы поддержите цветовую гамму нашего мероприятия!</p>
+            <p class="dress-code-text fade-in-element">Для леди — вечерние и коктейльные платья и костюмы в оттенках свадьбы</p>
+            <p class="dress-code-text fade-in-element">Для мужчин — костюмы или casual стиль, в черном или в оттенках свадьбы</p>
             <div class="dress-code-palette">
-                <div class="color-item">
+                <div class="color-item fade-in-right">
                     <div class="color-circle" style="background-color: #e0cfb5;"></div>
                 </div>
-                <div class="color-item">
+                <div class="color-item fade-in-right">
                     <div class="color-circle" style="background-color: #e0be86;"></div>
                 </div>
-                <div class="color-item">
+                <div class="color-item fade-in-right">
                     <div class="color-circle" style="background-color: #909e8d;"></div>
                 </div>
-                <div class="color-item">
+                <div class="color-item fade-in-right">
                     <div class="color-circle" style="background-color: #535e2c;"></div>
                 </div>
             </div>
@@ -2071,11 +2072,11 @@ img {
         <div class="section-content">
             <!-- Основная картинка -->
             <img src="https://static.tildacdn.com/tild6139-6666-4733-b139-326632313937/photo.svg" 
-                 class="contacts-main-image"
+                 class="contacts-main-image fade-in-right"
                  alt="Контактная информация">
             
             <!-- Текст под картинкой -->
-            <div class="contacts-subtext">
+            <div class="contacts-subtext fade-in-element">
                 <p>Если у вас появятся вопросы по поводу нашего торжества, свяжитесь с нами, пожалуйста.</p>
             </div>
             
@@ -2088,11 +2089,11 @@ img {
                 
                 <!-- Контактная информация -->
                 <div class="contacts-info">
-                    <div class="contact-person">
+                    <div class="contact-person fade-in-right">
                         <img src="https://i.ibb.co/V0ZgKxDm/kristina.png" class="namekristina" alt="">
                         <div class="contact-phone">+375 (29) 292-66-98</div>
                     </div>
-                    <div class="contact-person">
+                    <div class="contact-person fade-in-right">
                         <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya" alt="" style="
     transform: translateX(0);
 ">
@@ -2103,12 +2104,12 @@ img {
             
             <!-- Декоративная картинка -->
             <img src="https://static.tildacdn.com/tild3933-3134-4336-a365-623237336432/_________.svg" 
-                 class="contacts-decorative-image"
+                 class="contacts-decorative-image fade-in-element"
                  alt="Декоративная линия">
             
             <!-- Текст "С любовью" -->
             <img src="https://i.ibb.co/p6hqRM32/with-love.png" 
-                 class="with-love-image"
+                 class="with-love-image fade-in-scale"
                  alt="С любовью">
             </div>
         </div>

@@ -20,19 +20,39 @@ html, body {
 body {
     background: rgb(54 84 61);
     font-family: Georgia, serif;
-    min-height: 100vh;
+    min-height: 100dvh;
     overflow-y: auto;
 }
 
 .main-wrapper {
     width: 100%;
-    min-height: 400vh;
+	min-height: 100dvh;
+	align-items: center;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: rgb(54 84 61);
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+/* главный контейнер растягивается */
+.main-wrapper {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ===== ПЕРВЫЙ ЭКРАН ===== */
 .screen-1 {
     width: 100%;
-    height: 170vh;
+    height: 170dvh;
     /*display: flex;*/
     justify-content: center;
     align-items: center;
@@ -232,7 +252,7 @@ body {
 /* ===== ВТОРОЙ ЭКРАН ===== */
 .screen-2 {
     width: 100%;
-    height: 130vh;
+    height: 130dvh;
     background: #143e1f;
     /*display: flex;
     justify-content: center;*/
@@ -348,7 +368,7 @@ body {
 }
 
 .restaurant-name {
-    top: 22%;
+    top: 28%;
     font-size: 48px;
     font-weight: 500;
     letter-spacing: 2px;
@@ -356,7 +376,7 @@ body {
 }
 
 .restaurant-address {
-    top: 32%;
+    top: 37%;
     font-size: 22px;
     font-family: Georgia, serif;
     line-height: 1.4;
@@ -369,7 +389,7 @@ body {
 /* ===== НОВЫЕ БЛОКИ ===== */
 .screen-3, .screen-4, .screen-5 {
     width: 100%;
-    min-height: 60vh;
+    min-height: 60dvh;
     display: flex;
     justify-content: center;
     position: relative;
@@ -381,7 +401,7 @@ body {
 }
 
 .screen-4 {
-    height: 170vh;
+    height: 170dvh;
 }
 
 .screen-5 {
@@ -425,7 +445,7 @@ body {
 }
 
 .screen-3 {
-    min-height: 70vh;
+    min-height: 70dvh;
 }
 
 /* Программа дня */
@@ -722,12 +742,12 @@ body {
     }
     
     .screen-1 {
-        height: 150vh;
+        height: 150dvh;
         position: relative;
     }
     
     .screen-2 {
-        height: 90vh;
+        height: 80dvh;
         padding: 0;
         background: #143e1f;
     }
@@ -740,7 +760,7 @@ body {
         width: 100vw !important;
         height: 100% !important;
         transform: none !important;
-        min-height: 100vh;
+        min-height: 100dvh;
     }
     
     .container-2 {
@@ -757,7 +777,7 @@ body {
     }
     
     .scene-2 {
-        height: 100%;
+        height: 80dvh;
         position: relative;
 		text-align: center;
     }
@@ -768,7 +788,7 @@ body {
 }
 
 .screen-3 {
-    min-height: 60vh;
+    min-height: 60dvh;
 }
     
     .content {
@@ -890,6 +910,7 @@ body {
     .screen-2-image.location-icon {
         width: 150px;
         left: 65%;
+		top: 20%;
     }
     
     .screen-2-image.map-photo {
@@ -899,7 +920,7 @@ body {
     
     .screen-2-image.inverted-photo {
         width: 1200px;
-        bottom: 0%;
+        bottom: -5%;
     }
     
     .screen-2-image.flower {
@@ -910,7 +931,7 @@ body {
     }
 	
 	.screen-4 {
-		height: 155vh;
+		height: 155dvh;
 	}
 
     .screen-4-image.photo {
@@ -1486,7 +1507,6 @@ img {
     .with-love-image {
         width: 260px;
 		margin-top: 50px;
-		margin-bottom: 250px;
     }
     
     
@@ -1591,7 +1611,7 @@ img {
 @media (max-width: 768px) {
     .map-button-container {
 		position: relative;
-        top: 45%;
+        top: 47%;
     }
     
     .map-button {
@@ -1603,6 +1623,63 @@ img {
     .map-icon {
         font-size: 18px;
     }
+}
+
+/* ===== СТИЛИ ДЛЯ ФУТЕРА ===== */
+.footer {
+    position: relative;
+    width: 100%;
+    background-color: #36543d;
+    margin-top: auto;
+    width: 450px;
+}
+
+/* ЭТО КЛЮЧ */
+.footer-spacer {
+    height: 320px; /* desktop */
+}
+
+/* мобильные */
+@media (max-width: 768px) {
+    .footer-spacer {
+        height: 150px;
+    }
+}
+
+.footer-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 300px;
+}
+
+/* Мобильная версия футера */
+@media (max-width: 768px) {
+    .footer {
+    }
+    
+    .footer-content {
+        min-height: 200px;
+    }
+}
+
+/* Очистка плавающих элементов */
+.main-wrapper:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* Убедимся, что main-wrapper растягивается на весь контент */
+.main-wrapper {
+    width: 100%;
+    min-height: 100dvh;
+    position: relative;
+}
+
+/* Убираем лишние отступы */
+.screen-5 {
+    margin-bottom: 0;
 }
 
 </style>
@@ -1913,32 +1990,36 @@ img {
             <img src="https://i.ibb.co/p6hqRM32/with-love.png" 
                  class="with-love-image"
                  alt="С любовью">
-				 <div class="footer">
-                        <img src="https://optim.tildacdn.com/tild6166-6239-4530-b163-613361313630/-/resize/390x/-/format/webp/Rectangle_1002.png.webp" 
-                     class="contacts-background-image"
-                     alt="Фоновое изображение">
-            <img src="https://optim.tildacdn.com/tild3032-6665-4434-a463-353064363330/-/resize/240x/-/format/webp/Rectangle_1014.png.webp" 
-                         class="gallery-image gallery-img-1"
-                         alt="Фото 1">
-                    <img src="https://optim.tildacdn.com/tild3133-3934-4739-b865-636535383766/-/resize/170x/-/format/webp/nastyaulagasheva_mag.png.webp" 
-                         class="gallery-image gallery-img-2"
-                         alt="Фото 2">
-                    <img src="https://optim.tildacdn.com/tild3738-6636-4530-a434-303765316262/-/resize/190x/-/format/webp/Rectangle_1015.png.webp" 
-                         class="gallery-image gallery-img-3"
-                         alt="Фото 3">
-                    <img src="https://optim.tildacdn.com/tild6565-6665-4365-a161-666362303133/-/resize/240x/-/format/webp/Rectangle_1016.png.webp" 
-                         class="gallery-image gallery-img-4"
-                         alt="Фото 4">
-                    <img src="https://optim.tildacdn.com/tild3935-6234-4931-b339-313932663937/-/resize/100x/-/format/webp/Rectangle_1017.png.webp" 
-                         class="gallery-image gallery-img-5"
-                         alt="Фото 5">
-                    <img src="https://optim.tildacdn.com/tild6633-3439-4237-a535-343062306436/-/resize/70x/-/format/webp/nastyaulagasheva_mag.png.webp" 
-                         class="gallery-image gallery-img-6"
-                         alt="Фото 6">
-</div>
-
             </div>
         </div>
+		
+		<!-- FOOTER (вынесен отдельно) -->
+<div class="footer">
+	<div class="footer-spacer"></div>
+	<img src="https://optim.tildacdn.com/tild6166-6239-4530-b163-613361313630/-/resize/390x/-/format/webp/Rectangle_1002.png.webp" 
+	 class="contacts-background-image"
+	 alt="Фоновое изображение">
+	<img src="https://optim.tildacdn.com/tild3032-6665-4434-a463-353064363330/-/resize/240x/-/format/webp/Rectangle_1014.png.webp" 
+		 class="gallery-image gallery-img-1"
+		 alt="Фото 1">
+	<img src="https://optim.tildacdn.com/tild3133-3934-4739-b865-636535383766/-/resize/170x/-/format/webp/nastyaulagasheva_mag.png.webp" 
+		 class="gallery-image gallery-img-2"
+		 alt="Фото 2">
+	<img src="https://optim.tildacdn.com/tild3738-6636-4530-a434-303765316262/-/resize/190x/-/format/webp/Rectangle_1015.png.webp" 
+		 class="gallery-image gallery-img-3"
+		 alt="Фото 3">
+	<img src="https://optim.tildacdn.com/tild6565-6665-4365-a161-666362303133/-/resize/240x/-/format/webp/Rectangle_1016.png.webp" 
+		 class="gallery-image gallery-img-4"
+		 alt="Фото 4">
+	<img src="https://optim.tildacdn.com/tild3935-6234-4931-b339-313932663937/-/resize/100x/-/format/webp/Rectangle_1017.png.webp" 
+		 class="gallery-image gallery-img-5"
+		 alt="Фото 5">
+	<img src="https://optim.tildacdn.com/tild6633-3439-4237-a535-343062306436/-/resize/70x/-/format/webp/nastyaulagasheva_mag.png.webp" 
+		 class="gallery-image gallery-img-6"
+		 alt="Фото 6">
+    </div>
+</div>
+		
     </div>
 </div>
 
@@ -2016,6 +2097,7 @@ function handleMapClick(event) {
     }
     // На компьютерах - обычная ссылка на Яндекс Карты
 }
+
 </script>
 
 </body>

@@ -15,6 +15,7 @@ html, body {
     width: 100%;
     height: -webkit-fill-available;
     overflow-x: hidden;
+	scroll-behavior: smooth;
 }
 
 body {
@@ -285,8 +286,8 @@ body {
 
 .screen-2-image.title {
     width: 300px;
-    left: 50%;
-    transform: translateX(-50%);
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
 }
 
 .screen-2-image.text {
@@ -1738,6 +1739,62 @@ img {
     max-width: 600px;
 }
 
+/* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ ===== */
+
+/* Класс для скрытия элементов изначально */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Класс для активации анимации при скролле */
+.fade-in-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Дополнительные варианты анимаций */
+/*.fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+*/
+/*.fade-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}*/
+
+/*.fade-in-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}*/
+
+.fade-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.fade-in-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Задержки для последовательного появления */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+.delay-4 { transition-delay: 0.8s; }
+.delay-5 { transition-delay: 1s; }
+
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -1803,14 +1860,14 @@ img {
                 <!-- НИЖНИЙ ТЕКСТ С КАРТИНКОЙ -->
                 <div class="bottom-text">
                     <img src="https://optim.tildacdn.com/tild6666-6237-4436-b131-376363396132/-/resize/110x/-/format/webp/543543_1.png.webp" 
-                         class="bottom-text-image" 
+                         class="bottom-text-image fade-in-element" 
                          alt="Декоративная картинка">
-                    <p>Совсем скоро наступит наш<br>особенный день - наша свадьба!</p>
+                    <p class="fade-in-element">Совсем скоро наступит наш<br>особенный день - наша свадьба!</p>
 					<img src="https://i.ibb.co/q3t1cdmS/6626.png" 
-                     class="screen-2-image title" 
+                     class="screen-2-image title  fade-in-element" 
                      alt="Дорогие гости!">
 					<img src="https://static.tildacdn.com/tild3730-6132-4438-b062-333533636231/_______________.svg" 
-                     class="screen-2-image text" 
+                     class="screen-2-image text  fade-in-element" 
                      alt="Текст приглашения">
 					 
                 </div>
@@ -2160,6 +2217,118 @@ function handleMapClick(event) {
     }
     // На компьютерах - обычная ссылка на Яндекс Карты
 }
+
+// АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (УЛУЧШЕННАЯ ВЕРСИЯ)
+document.addEventListener('DOMContentLoaded', function() {
+    const fadeElements = document.querySelectorAll('.fade-in-element, .fade-in-left, .fade-in-right, .fade-in-scale');
+    
+    // Проверяем, является ли элемент видимым (с учетом родительских контейнеров)
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+        
+        // Более либеральные условия для мобильных устройств
+        const triggerOffset = window.innerWidth <= 768 ? 150 : 100;
+        
+        // Проверяем, находится ли элемент в видимой области или чуть ниже/выше
+        return (
+            rect.top <= windowHeight - triggerOffset &&
+            rect.bottom >= -triggerOffset &&
+            rect.left <= windowWidth &&
+            rect.right >= 0
+        );
+    }
+    
+    // Функция для проверки всех элементов
+    function checkFadeElements() {
+        fadeElements.forEach((element, index) => {
+            if (isElementInViewport(element) && !element.classList.contains('visible')) {
+                // Вычисляем задержку на основе класса или индекса
+                let delay = 0;
+                
+                if (element.classList.contains('delay-1')) delay = 200;
+                else if (element.classList.contains('delay-2')) delay = 400;
+                else if (element.classList.contains('delay-3')) delay = 600;
+                else if (element.classList.contains('delay-4')) delay = 800;
+                else if (element.classList.contains('delay-5')) delay = 1000;
+                else {
+                    // Если нет класса delay, используем небольшую задержку на основе индекса
+                    delay = (index % 3) * 100;
+                }
+                
+                // Анимируем элемент с задержкой
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, delay);
+            }
+        });
+    }
+    
+    // Первоначальная проверка после загрузки
+    setTimeout(checkFadeElements, 300);
+    
+    // Проверка при скролле с debounce
+    let scrollTimeout;
+    window.addEventListener('scroll', function() {
+        if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+        }
+        scrollTimeout = setTimeout(checkFadeElements, 50);
+    });
+    
+    // Проверка при изменении размера окна
+    window.addEventListener('resize', function() {
+        setTimeout(checkFadeElements, 100);
+    });
+    
+    // Проверка после загрузки всех изображений
+    window.addEventListener('load', function() {
+        setTimeout(checkFadeElements, 500);
+    });
+    
+    // Дополнительная проверка для мобильных устройств
+    if (/iPhone|iPad|iPod|Android/.test(navigator.userAgent)) {
+        // Проверка при начале касания (для iOS)
+        document.addEventListener('touchstart', function() {
+            setTimeout(checkFadeElements, 200);
+        }, { once: true });
+        
+        // Проверка после изменения ориентации
+        window.addEventListener('orientationchange', function() {
+            setTimeout(checkFadeElements, 500);
+        });
+    }
+    
+    // Также можно добавить Intersection Observer для более точного отслеживания
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            root: null,
+            rootMargin: '50px', // Начинаем анимацию немного раньше
+            threshold: 0.1 // Срабатывает, когда 10% элемента видно
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    if (!element.classList.contains('visible')) {
+                        // Добавляем небольшую случайную задержку для плавности
+                        const delay = Math.random() * 300;
+                        setTimeout(() => {
+                            element.classList.add('visible');
+                        }, delay);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Наблюдаем за всеми элементами
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+});
 
 </script>
 

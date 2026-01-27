@@ -2209,13 +2209,60 @@ img {
 </div>
 
 <script>
-// АВТОМАТИЧЕСКОЕ МАСШТАБИРОВАНИЕ ПРИ ИЗМЕНЕНИИ РАЗМЕРА ОКНА
-document.addEventListener('DOMContentLoaded', function() {
-    const container = document.querySelector('.container');
-    const container2 = document.querySelector('.container-2');
-    const isMobile = window.innerWidth <= 768;
-    
+// Глобальная переменная для отслеживания загрузки
+let allImagesLoaded = false;
+let imagesToLoad = [];
+let imagesLoaded = 0;
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим все изображения на странице
+    const allImages = document.querySelectorAll('img');
+    const totalImages = allImages.length;
+    
+    if (totalImages === 0) {
+        allImagesLoaded = true;
+        initAnimations();
+        return;
+    }
+    
+    // Создаем прелоадер для отслеживания загрузки
+    allImages.forEach(img => {
+        // Если изображение уже загружено (из кэша)
+        if (img.complete && img.naturalHeight !== 0) {
+            imagesLoaded++;
+            checkAllImagesLoaded();
+        } else {
+            // Добавляем обработчики для изображений, которые еще грузятся
+            img.addEventListener('load', imageLoaded);
+            img.addEventListener('error', imageLoaded); // Даже если ошибка, считаем загруженным
+        }
+    });
+    
+    // Также на всякий случай проверяем через 5 секунд
+    setTimeout(() => {
+        if (!allImagesLoaded) {
+            console.log('Таймаут загрузки изображений, запускаем анимации');
+            allImagesLoaded = true;
+            initAnimations();
+        }
+    }, 5000);
+    
+    function imageLoaded() {
+        imagesLoaded++;
+        checkAllImagesLoaded();
+        
+        // Удаляем обработчики после загрузки
+        this.removeEventListener('load', imageLoaded);
+        this.removeEventListener('error', imageLoaded);
+    }
+    
+    function checkAllImagesLoaded() {
+        if (imagesLoaded >= totalImages && !allImagesLoaded) {
+            allImagesLoaded = true;
+            console.log('Все изображения загружены!');
+            initAnimations();
+        }
+    }
     
     // Блокировка масштабирования на мобильных
     document.addEventListener('touchstart', function(e) {
@@ -2235,68 +2282,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }, { passive: false });
 });
 
-// Функция для плавной прокрутки ко второму экрану
-function scrollToSecondScreen() {
-    const secondScreen = document.getElementById('second-screen');
-    secondScreen.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+// Функция инициализации всех анимаций
+function initAnimations() {
+    console.log('Инициализация анимаций...');
+    
+    // Инициализация анимаций при скролле
+    initScrollAnimations();
+    
+    // Активируем начальные анимации
+    activateInitialAnimations();
+    
+    // Запускаем проверку видимости элементов
+    setTimeout(checkFadeElements, 100);
+    setTimeout(checkMoveInElements, 100);
+}
+
+// Активация начальных анимаций (те, что должны запуститься сразу)
+function activateInitialAnimations() {
+    // Здесь можно активировать элементы, которые должны быть видны сразу
+    // Например, основные элементы первого экрана
+    const immediateElements = document.querySelectorAll('.fade-in-opacity, .fade-in-element');
+    immediateElements.forEach(el => {
+        if (isElementInViewport(el)) {
+            el.classList.add('visible');
+        }
     });
 }
 
-// Улучшенная версия функции
-function handleMapClick(event) {
-    const address = "Брестская область, город Ивацевичи, ул. Ленина 8а";
-    const encodedAddress = encodeURIComponent(address);
-    
-    // Если это мобильное устройство
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        event.preventDefault();
-        
-        // URL для разных карт
-        const urls = {
-            yandexApp: `yandexmaps://maps.yandex.ru/?text=${encodedAddress}`,
-            yandexWeb: `https://yandex.ru/maps/?text=${encodedAddress}&z=16`,
-            googleMaps: `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`
-        };
-        
-        // Пробуем открыть приложение Яндекс Карт
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = urls.yandexApp;
-        
-        // Добавляем iframe на страницу
-        document.body.appendChild(iframe);
-        
-        // Через 500ms проверяем, открылось ли приложение
-        setTimeout(function() {
-            document.body.removeChild(iframe);
-            
-            // Если пользователь все еще на странице, открываем Яндекс Карты в браузере
-            setTimeout(function() {
-                window.location.href = urls.yandexWeb;
-            }, 100);
-        }, 500);
-        
-        return false;
-    }
-    // На компьютерах - обычная ссылка на Яндекс Карты
-}
-
-// АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (УЛУЧШЕННАЯ ВЕРСИЯ)
-document.addEventListener('DOMContentLoaded', function() {
+// Инициализация анимаций при скролле
+function initScrollAnimations() {
     const fadeElements = document.querySelectorAll('.fade-in-element, .fade-in-left, .fade-in-right, .fade-in-scale, .fade-in-opacity');
+    const moveInElements = document.querySelectorAll('.move-in-element');
     
-    // Проверяем, является ли элемент видимым (с учетом родительских контейнеров)
+    // Проверяем, является ли элемент видимым
     function isElementInViewport(el) {
         const rect = el.getBoundingClientRect();
         const windowHeight = window.innerHeight || document.documentElement.clientHeight;
         const windowWidth = window.innerWidth || document.documentElement.clientWidth;
         
-        // Более либеральные условия для мобильных устройств
         const triggerOffset = window.innerWidth <= 768 ? 150 : 100;
         
-        // Проверяем, находится ли элемент в видимой области или чуть ниже/выше
         return (
             rect.top <= windowHeight - triggerOffset &&
             rect.bottom >= -triggerOffset &&
@@ -2305,11 +2330,12 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     }
     
-    // Функция для проверки всех элементов
+    // Функция для проверки fade элементов
     function checkFadeElements() {
+        if (!allImagesLoaded) return;
+        
         fadeElements.forEach((element, index) => {
             if (isElementInViewport(element) && !element.classList.contains('visible')) {
-                // Вычисляем задержку на основе класса или индекса
                 let delay = 0;
                 
                 if (element.classList.contains('delay-1')) delay = 200;
@@ -2318,11 +2344,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 else if (element.classList.contains('delay-4')) delay = 800;
                 else if (element.classList.contains('delay-5')) delay = 1000;
                 else {
-                    // Если нет класса delay, используем небольшую задержку на основе индекса
                     delay = (index % 3) * 100;
                 }
                 
-                // Анимируем элемент с задержкой
                 setTimeout(() => {
                     element.classList.add('visible');
                 }, delay);
@@ -2330,55 +2354,57 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Первоначальная проверка после загрузки
-    setTimeout(checkFadeElements, 300);
+    // Функция для проверки move-in элементов
+    function checkMoveInElements() {
+        if (!allImagesLoaded) return;
+        
+        moveInElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            if (rect.top < windowHeight * 0.7 && !element.classList.contains('visible')) {
+                element.classList.add('visible');
+            }
+        });
+    }
     
     // Проверка при скролле с debounce
     let scrollTimeout;
     window.addEventListener('scroll', function() {
+        if (!allImagesLoaded) return;
+        
         if (scrollTimeout) {
             clearTimeout(scrollTimeout);
         }
-        scrollTimeout = setTimeout(checkFadeElements, 50);
+        scrollTimeout = setTimeout(() => {
+            checkFadeElements();
+            checkMoveInElements();
+        }, 50);
     });
     
     // Проверка при изменении размера окна
     window.addEventListener('resize', function() {
-        setTimeout(checkFadeElements, 100);
-    });
-    
-    // Проверка после загрузки всех изображений
-    window.addEventListener('load', function() {
-        setTimeout(checkFadeElements, 500);
-    });
-    
-    // Дополнительная проверка для мобильных устройств
-    if (/iPhone|iPad|iPod|Android/.test(navigator.userAgent)) {
-        // Проверка при начале касания (для iOS)
-        document.addEventListener('touchstart', function() {
-            setTimeout(checkFadeElements, 200);
-        }, { once: true });
+        if (!allImagesLoaded) return;
         
-        // Проверка после изменения ориентации
-        window.addEventListener('orientationchange', function() {
-            setTimeout(checkFadeElements, 500);
-        });
-    }
+        setTimeout(() => {
+            checkFadeElements();
+            checkMoveInElements();
+        }, 100);
+    });
     
-    // Также можно добавить Intersection Observer для более точного отслеживания
-    if ('IntersectionObserver' in window) {
+    // Используем Intersection Observer если доступен
+    if ('IntersectionObserver' in window && allImagesLoaded) {
         const observerOptions = {
             root: null,
-            rootMargin: '50px', // Начинаем анимацию немного раньше
-            threshold: 0.1 // Срабатывает, когда 10% элемента видно
+            rootMargin: '50px',
+            threshold: 0.1
         };
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && allImagesLoaded) {
                     const element = entry.target;
                     if (!element.classList.contains('visible')) {
-                        // Добавляем небольшую случайную задержку для плавности
                         const delay = Math.random() * 300;
                         setTimeout(() => {
                             element.classList.add('visible');
@@ -2392,38 +2418,70 @@ document.addEventListener('DOMContentLoaded', function() {
         fadeElements.forEach(element => {
             observer.observe(element);
         });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Отдельно обрабатываем move-in элементы
-    const moveInElements = document.querySelectorAll('.move-in-element');
-    
-    function checkMoveInElements() {
+        
         moveInElements.forEach(element => {
-            const rect = element.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            
-            // Элемент появляется когда он в нижней трети экрана
-            if (rect.top < windowHeight * 0.7 && !element.classList.contains('visible')) {
-                element.classList.add('visible');
-                console.log('Move-in элемент активирован:', element);
-            }
+            observer.observe(element);
         });
     }
     
-    // Проверяем сразу
-    checkMoveInElements();
+    // Инициальная проверка после небольшой задержки
+    setTimeout(() => {
+        if (allImagesLoaded) {
+            checkFadeElements();
+            checkMoveInElements();
+        }
+    }, 300);
+}
+
+// Функция для плавной прокрутки ко второму экрану
+function scrollToSecondScreen() {
+    if (!allImagesLoaded) return;
     
-    // И при скролле
-    window.addEventListener('scroll', checkMoveInElements);
-});
+    const secondScreen = document.getElementById('second-screen');
+    secondScreen.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}
 
-
+// Функция для обработки клика по карте (остаётся без изменений)
+function handleMapClick(event) {
+    if (!allImagesLoaded) return;
+    
+    const address = "Брестская область, город Ивацевичи, ул. Ленина 8а";
+    const encodedAddress = encodeURIComponent(address);
+    
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        event.preventDefault();
+        
+        const urls = {
+            yandexApp: `yandexmaps://maps.yandex.ru/?text=${encodedAddress}`,
+            yandexWeb: `https://yandex.ru/maps/?text=${encodedAddress}&z=16`,
+            googleMaps: `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`
+        };
+        
+        const iframe = document.createElement('iframe');
+        iframe.style.display = 'none';
+        iframe.src = urls.yandexApp;
+        
+        document.body.appendChild(iframe);
+        
+        setTimeout(function() {
+            document.body.removeChild(iframe);
+            
+            setTimeout(function() {
+                window.location.href = urls.yandexWeb;
+            }, 100);
+        }, 500);
+        
+        return false;
+    }
+}
 </script>
 
 </body>
 </html>
+
 
 
 

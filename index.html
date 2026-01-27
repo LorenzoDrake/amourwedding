@@ -2508,10 +2508,20 @@ function handleMapClick(event) {
         return false;
     }
 }
+
+if (navigator.userAgent.match(/Telegram|Viber|Line|FBAN|FBAV/i)) {
+    window.location.href = 'intent://ваш-сайт.com#Intent;scheme=http;package=com.android.chrome;end';
+    // или просто предлагаем открыть в браузере
+    setTimeout(function() {
+        window.location.href = 'https://ваш-сайт.com';
+    }, 1000);
+}
+	
 </script>
 
 </body>
 </html>
+
 
 
 

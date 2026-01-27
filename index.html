@@ -151,8 +151,9 @@ body {
 .cloud.top {
     top: -100px;
     right: 80px;
-    transform: rotate(225deg);
+    /*transform: rotate(225deg);*/
     width: 500px;
+	z-index:99999;
 }
 
 .cloud.bottom {
@@ -160,11 +161,12 @@ body {
     left: 120px;
     transform: rotate(225deg);
     width: 400px;
+	z-index:99999;
 }
 
 .angel {
     position: absolute;
-    z-index: 4;
+    z-index:999999;
     width: 450px;
 }
 
@@ -172,12 +174,14 @@ body {
     top: -100px;
     right: 140px;
     transform: rotate(110deg);
+	z-index:999999;
 }
 
 .angel.bottom {
     top: 26%;
     left: 120px;
     transform: scalex(-1) rotate(180deg);
+	z-index:999999;
 }
 
 .flower {
@@ -848,7 +852,6 @@ body {
     .angel.top {
         top: -30px;
         right: -130px;
-        transform: rotate(100deg);
     }
     
     .angel.bottom {
@@ -1757,6 +1760,56 @@ img {
     /*transform: translateY(0);*/
 }
 
+/* Класс для скрытия элементов изначально */
+.move-in-element.cloudtop {
+    translate: -100px 200px;
+	transform: rotate(250deg);
+    transition: transform 4s ease, translate 4s ease;
+}
+
+/* Класс для активации анимации при скролле */
+.move-in-element.cloudtop.visible {
+	translate: 0 0;
+    transform: rotate(225deg);
+}
+
+
+.move-in-element.cloudbottom {
+    translate: 100px -200px;
+	transform: rotate(250deg);
+    transition: transform 4s ease, translate 4s ease;
+}
+
+/* Класс для активации анимации при скролле */
+.move-in-element.cloudbottom.visible {
+	translate: 0 0;
+    transform: rotate(225deg);
+}
+
+.move-in-element.angeltop {
+    translate: -100px 200px;
+	transform: rotate(75deg);
+    transition: transform 4s ease, translate 4s ease;
+}
+
+/* Класс для активации анимации при скролле */
+.move-in-element.angeltop.visible {
+	translate: 0 0;
+    transform: rotate(100deg);
+}
+
+.move-in-element.angelbottom {
+    translate: 100px -200px;
+	transform: scalex(-1) rotate(240deg);
+    transition: transform 4s ease, translate 4s ease;
+}
+
+/* Класс для активации анимации при скролле */
+.move-in-element.angelbottom.visible {
+	translate: 0 0;
+    transform: scalex(-1) rotate(215deg);
+}
+
 /* Дополнительные варианты анимаций */
 .fade-in-left {
     opacity: 0;
@@ -1789,6 +1842,15 @@ img {
 .fade-in-scale.visible {
     opacity: 1;
     scale: 1;
+}
+
+.fade-in-opacity {
+    opacity: 0;
+    transition: opacity 3s ease;
+}
+
+.fade-in-opacity.visible {
+    opacity: 1;
 }
 
 /* Задержки для последовательного появления */
@@ -1827,36 +1889,36 @@ img {
                 <!-- ВЕРХНЕЕ ОБЛАКО С АНГЕЛОМ -->
                 <img
                     src="https://static.tildacdn.com/tild3333-3431-4635-a661-633466303738/photo.png"
-                    class="cloud top"
+                    class="cloud top move-in-element cloudtop"
                     alt=""
                 >
                     <img
                         src="https://static.tildacdn.com/tild6133-6438-4761-a465-326532333538/photo.png"
-                        class="angel top"
+                        class="angel top move-in-element angeltop"
                         alt="Ангел"
                     >
 
                 <!-- НИЖНЕЕ ОБЛАКО С АНГЕЛОМ -->
                 <img
                     src="https://static.tildacdn.com/tild3362-6364-4365-b736-333764326239/Rectangle_125.png"
-                    class="cloud bottom"
+                    class="cloud bottom move-in-element cloudbottom"
                     alt=""
                 >
                     <img
                         src="https://static.tildacdn.com/tild6133-6438-4761-a465-326532333538/photo.png"
-                        class="angel bottom"
+                        class="angel bottom move-in-element angelbottom"
                         alt="Ангел"
                     >
 
                 <!-- ЦЕНТР -->
                 <div class="content">
                     <div class="names">
-                        <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya" alt="">
-						<span><img src="https://i.ibb.co/NdfdVpG6/2.png" class="symboland" alt=""></span><br>
-                        <img src="https://i.ibb.co/V0ZgKxDm/kristina.png" class="namekristina" alt="">
+                        <img src="https://i.ibb.co/LXqQdBph/ilya.png" class="nameilya fade-in-right delay-2" alt="">
+						<span><img src="https://i.ibb.co/NdfdVpG6/2.png" class="symboland fade-in-opacity delay-2" alt=""></span><br>
+                        <img src="https://i.ibb.co/V0ZgKxDm/kristina.png" class="namekristina fade-in-left delay-2" alt="">
                     </div>
                     <div class="date">
-                        <img src="https://i.ibb.co/qFLKVpnM/weddate.png" class="weddate" alt="">
+                        <img src="https://i.ibb.co/qFLKVpnM/weddate.png" class="weddate fade-in-element delay-2" alt="">
                     </div>
                 </div>
                 
@@ -2223,7 +2285,7 @@ function handleMapClick(event) {
 
 // АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (УЛУЧШЕННАЯ ВЕРСИЯ)
 document.addEventListener('DOMContentLoaded', function() {
-    const fadeElements = document.querySelectorAll('.fade-in-element, .fade-in-left, .fade-in-right, .fade-in-scale');
+    const fadeElements = document.querySelectorAll('.fade-in-element, .fade-in-left, .fade-in-right, .fade-in-scale, .fade-in-opacity');
     
     // Проверяем, является ли элемент видимым (с учетом родительских контейнеров)
     function isElementInViewport(el) {
@@ -2333,10 +2395,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Отдельно обрабатываем move-in элементы
+    const moveInElements = document.querySelectorAll('.move-in-element');
+    
+    function checkMoveInElements() {
+        moveInElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Элемент появляется когда он в нижней трети экрана
+            if (rect.top < windowHeight * 0.7 && !element.classList.contains('visible')) {
+                element.classList.add('visible');
+                console.log('Move-in элемент активирован:', element);
+            }
+        });
+    }
+    
+    // Проверяем сразу
+    checkMoveInElements();
+    
+    // И при скролле
+    window.addEventListener('scroll', checkMoveInElements);
+});
+
+
 </script>
 
 </body>
 </html>
+
 
 
 

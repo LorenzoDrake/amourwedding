@@ -359,7 +359,7 @@ body {
     width: 100vw;
     bottom: 0;
     left: 0%;
-    z-index: 9999;
+    z-index: 9999 !important;
     margin-bottom: -15px;
 }
 
@@ -749,7 +749,7 @@ body {
     }
     
     .screen-1 {
-        height: 160vh;
+        height: 1200px;
         position: relative;
     }
     
@@ -1892,6 +1892,26 @@ a[href^="tel"] {
         font-size: 22px !important;
     }
 }
+
+
+/* Добавьте в CSS в раздел screen-1 */
+.screen-1 .container {
+    min-height: 100%;
+    overflow: visible;
+}
+
+.screen-1 .scene {
+    min-height: 100%;
+    padding-bottom: 100px; /* Запасное пространство */
+}
+
+/* Убедитесь, что фото не перекрывает другие элементы */
+img[alt="Фотография"] {
+    position: absolute !important;
+    bottom: 0 !important;
+    z-index: 1 !important;
+}
+
 	
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
@@ -2509,20 +2529,97 @@ function handleMapClick(event) {
     }
 }
 
-if (navigator.userAgent.match(/Telegram|Viber|Line|FBAN|FBAV/i)) {
-    window.location.href = 'intent://ваш-сайт.com#Intent;scheme=http;package=com.android.chrome;end';
-    // или просто предлагаем открыть в браузере
-    setTimeout(function() {
-        window.location.href = 'https://ваш-сайт.com';
-    }, 1000);
+// Добавьте этот код в конец вашего скрипта или в DOMContentLoaded
+
+function adjustScreen1Height() {
+    // Ждем загрузки всех изображений
+    if (!allImagesLoaded) {
+        setTimeout(adjustScreen1Height, 100);
+        return;
+    }
+    
+    const textImage = document.querySelector('img[alt="Текст приглашения"]');
+    const photoImage = document.querySelector('img[alt="Фотография"]');
+    
+    if (!textImage || !photoImage) return;
+    
+    // Получаем позиции элементов
+    const textRect = textImage.getBoundingClientRect();
+    const photoRect = photoImage.getBoundingClientRect();
+    
+    // Проверяем расстояние между нижней границей текста и верхней границей фото
+    const distance = photoRect.top - textRect.bottom;
+    const minDistance = 100; // Минимальное расстояние в пикселях
+    
+    console.log('Расстояние между элементами:', distance, 'px');
+    
+    // Если расстояние слишком маленькое (меньше 100px) или элементы перекрываются
+    if (distance < minDistance) {
+        // Вычисляем, сколько нужно добавить высоты
+        const neededHeight = minDistance - distance;
+        
+        // Получаем текущую высоту screen-1
+        const screen1 = document.querySelector('.screen-1');
+        if (screen1) {
+            // Получаем текущую высоту из стилей
+            let currentHeight;
+            if (window.getComputedStyle(screen1).height !== 'auto') {
+                currentHeight = parseFloat(window.getComputedStyle(screen1).height);
+            } else {
+                // Если высота auto, используем scrollHeight
+                currentHeight = screen1.scrollHeight;
+            }
+            
+            // Добавляем необходимую высоту + небольшой запас
+            const newHeight = currentHeight + neededHeight + 20;
+            
+            console.log(`Добавляем высоту для screen-1: ${currentHeight}px -> ${newHeight}px`);
+            
+            // Устанавливаем новую высоту
+            screen1.style.height = `${newHeight}px`;
+            
+            // Также проверяем margin-bottom
+            if (screen1.style.marginBottom) {
+                const currentMargin = 0;
+            } else {
+            }
+        }
+    }
+    
+    // Дополнительная проверка для контейнера
+    const container = document.querySelector('.screen-1 .container');
+    if (container) {
+        const containerHeight = container.scrollHeight;
+        const containerStyleHeight = parseFloat(window.getComputedStyle(container).height);
+        
+        if (containerHeight > containerStyleHeight) {
+            const neededContainerHeight = containerHeight - containerStyleHeight;
+            container.style.height = `${containerHeight + neededContainerHeight}px`;
+        }
+    }
 }
-	
+
+// Запускаем проверку при загрузке и изменении размеров
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(adjustScreen1Height, 500);
+});
+
+window.addEventListener('load', adjustScreen1Height);
+window.addEventListener('resize', function() {
+    setTimeout(adjustScreen1Height, 100);
+});
+
+// Также запускаем после загрузки всех изображений
+const originalInitAnimations = initAnimations;
+initAnimations = function() {
+    originalInitAnimations();
+    setTimeout(adjustScreen1Height, 300);
+};
+
 </script>
 
 </body>
 </html>
-
-
 
 
 
